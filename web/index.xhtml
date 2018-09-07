@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:head>
+        <title>SliderControl</title>
+        
+    </h:head>
+    <h:body>
+            <link rel="stylesheet" type="text/css" href="styleSheet.css" />
+            
+            <p:layout fullPage="true" >
+
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headerfootertxt">
+                    <img src="pegasus.png" class = "style_pegasusimage" />
+                    SliderControlv1_0
+                </p:layoutUnit>
+
+                <p:layoutUnit position="south" size="100" closable="true" collapsible="true" class = "style_headerfootertxt">
+                    Pegasus Systems GmbH
+                </p:layoutUnit>
+                <!--
+                <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                    <p:menu>
+                        <p:submenu label="Resources">
+                            <p:menuitem value="Demo" url="http://www.primefaces.org/showcase-labs/ui/home.jsf" />
+                            <p:menuitem value="Documentation" url="http://www.primefaces.org/documentation.html" />
+                            <p:menuitem value="Forum" url="http://forum.primefaces.org/" />
+                            <p:menuitem value="Themes" url="http://www.primefaces.org/themes.html" />
+
+                        </p:submenu>
+
+                    </p:menu>
+                </p:layoutUnit>
+                -->
+                
+                <p:layoutUnit position="center">
+                    <c:set var="channel" value="1" scope = "session" />
+                    <h:panelGrid columns="1" class = "style_panelslider" >
+                         <h:outputText id="output" value="Set ratio &lt;br/&gt; Channel ${channel} to 0%" escape = "false"/>
+                         <h:inputHidden id="txt" value="0" />
+                         <p:slider for="txt" display="output" type = "vertical" style = "width:15px;height:500px;margin-left:30%" displayTemplate="Set ratio &lt;br/&gt; Channel ${channel} to {value}%" />
+                         <br></br>
+                         <p:commandButton value = "Channel 1" />
+                    </h:panelGrid>
+                </p:layoutUnit>
+
+            </p:layout>
+        
+        
+    </h:body>
+</html>
+
