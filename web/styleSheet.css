@@ -8,8 +8,13 @@ and open the template in the editor.
     Author     : hfischer
 */
 
+.style_app{
+    
+}
+
 .style_headerfootertxt{
     font-size: 30px;
+    margin-left: 10px;
 }
 
 .style_pegasusimage{
@@ -22,13 +27,28 @@ and open the template in the editor.
 
 .style_panelslider{
     width: 10%;
-    height:100%;
-    
+    height:100%;    
+    margin: 0px;
 }
+
 .style_slider{
-    background-color: #0000FF;
-    margin: 10%;
-    width:100px;
-    height:100%;
+    
+    margin-left: 20px;
+    width:  10px;
+    height: 100px;
+
+}
+
+.style_button{
+    width: 100px;
+    height:60px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.style_endpoint{
+    width: 30%;
+    height: 20%;
+    margin: 10px;
     
 }
