@@ -25,8 +25,13 @@ and open the template in the editor.
     height: 50px;
 }
 
+.style_wrapper{
+    width:  80%;
+    height: 80%;
+}
+
 .style_panelslider{
-    width: 10%;
+    width: 15%;
     height:100%;    
     margin: 0px;
 }
@@ -40,15 +45,28 @@ and open the template in the editor.
 }
 
 .style_button{
-    width: 100px;
-    height:60px;
+    width: 130px;
+    height:40px;
     font-size: 15px;
     margin-left: 10px;
 }
 
-.style_endpoint{
-    width: 30%;
-    height: 20%;
-    margin: 10px;
+.style_cmdbutton{
+    width:  80%;
+    height: 40px;
+    margin: 20px;
     
 }
+
+.style_inputtext{
+    width: 150px;
+    height:20px;
+}
+.style_endpoint{
+    width:  80%;
+    height: 20%;
+    margin: 20px;
+    
+}
+
+
