@@ -40,81 +40,81 @@
                     <h:panelGrid columns = "9" class = "style_wrapper" >
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         <c:set var="channel0" value="1" scope = "request" />
-                        <h:outputText id="output0" value="Set ratio &lt;br/&gt; Channel ${channel0} &lt;br/&gt; to 0%" escape = "false"/>
+                        <h:outputText id="output0" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id="txt0" value="0" />
-                        <p:slider for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel0} &lt;br/&gt; to {value}%"/>
+                        <p:slider for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%"/>
                         <br></br>
                         <p:commandButton value = "Channel 1" class = "style_button"  />
                     </h:panelGrid>
                     
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         <c:set var = "channel1" value = "2" scope = "request" />
-                        <h:outputText id ="output1" value="Set ratio &lt;br/&gt; Channel ${channel1} &lt;br/&gt; to 0%" escape = "false"/>
+                        <h:outputText id ="output1" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id="txt1" value="0" />
-                        <p:slider for="txt1" display="output1" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel1} &lt;br/&gt; to {value}%"/>
+                        <p:slider for="txt1" display="output1" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%"/>
                         <br></br>
                         <p:commandButton value = "Channel 2" class = "style_button"  />
                     </h:panelGrid>
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel2" value = "3" scope = "request" />
-                       <h:outputText id = "output2" value="Set ratio &lt;br/&gt; Channel ${channel2} &lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output2" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt2" value = "0" />
-                       <p:slider for = "txt2" display = "output2" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel2} &lt;br/&gt; to {value}%" />
+                       <p:slider for = "txt2" display = "output2" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 3" class = "style_button"  />
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel3" value = "4" scope = "request" />
-                       <h:outputText id = "output3" value="Set ratio &lt;br/&gt; Channel ${channel3} &lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output3" class = "style_output" value = "0%" escape = "false"/>
                        <h:inputHidden id = "txt3" value = "0" />
-                       <p:slider for = "txt3" display = "output3" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel3} &lt;br/&gt; to {value}%" />
+                       <p:slider for = "txt3" display = "output3" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 4" class = "style_button"  />
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel4" value = "5" scope = "request" />
-                       <h:outputText id = "output4" value="Set ratio &lt;br/&gt; Channel ${channel4} &lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output4" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt4" value = "0" />
-                       <p:slider for = "txt4" display = "output4" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel4} &lt;br/&gt; to {value}%" />
+                       <p:slider for = "txt4" display = "output4" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 4" class = "style_button"  />
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel5" value = "6" scope = "request" />
-                       <h:outputText id = "output5" value="Set ratio &lt;br/&gt; Channel ${channel5} &lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output5" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt5" value = "0" />
-                       <p:slider for = "txt5" display = "output5" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel5} to {value}%" />
+                       <p:slider for = "txt5" display = "output5" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 6" class = "style_button"  />
                     </h:panelGrid>
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel6" value = "7" scope = "request" />
-                       <h:outputText id = "output6" value="Set ratio &lt;br/&gt; Channel ${channel6} &lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output6" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt6" value = "0" />
-                       <p:slider for = "txt6" display = "output6" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel6} &lt;br/&gt; to {value}%" />
+                       <p:slider for = "txt6" display = "output6" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 7" class = "style_button"  />
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <c:set var = "channel7" value = "8" scope = "request" />
-                       <h:outputText id = "output7" value="Set ratio &lt;br/&gt; Channel ${channel7}&lt;br/&gt; to 0%" escape = "false"/>
+                       <h:outputText id = "output7" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt7" value = "0" />
-                       <p:slider for = "txt7" display = "output7" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channel7} &lt;br/&gt; to {value}%" />
+                       <p:slider for = "txt7" display = "output7" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Channel 8" class = "style_button"  />
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                         <c:set var = "channelmaster" value = "Master" scope = "request" />
-                        <h:outputText id = "output10" value="Set ratio &lt;br/&gt; Channel ${channelmaster} &lt;br/&gt; to 0%" escape = "false"/>
+                        <h:outputText id = "output10" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id = "txt10" value = "0" />
-                        <p:slider for = "txt10" display = "output10" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="Set ratio &lt;br/&gt; Channel ${channelmaster} &lt;br/&gt; to {value}%" />
+                        <p:slider for = "txt10" display = "output10" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
                         <br></br>
                         <p:commandButton value = "Master" class = "style_button"  />
                     </h:panelGrid>

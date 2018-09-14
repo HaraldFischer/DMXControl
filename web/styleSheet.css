@@ -44,6 +44,11 @@ and open the template in the editor.
 
 }
 
+.style_output{
+    margin: 30px;
+    font-size: 25px;
+}
+
 .style_button{
     width: 130px;
     height:40px;
@@ -69,4 +74,7 @@ and open the template in the editor.
     
 }
 
-
+.style_panelslidermaster{
+    border: #000000 solid 1px;
+    margin: 0px;
+}
