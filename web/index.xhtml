@@ -29,11 +29,11 @@
 
                     <h:panelGrid columns = "2" class = "style_endpoint">
                         <p:outputLabel value = "IP:" />
-                        <p:inputText class = "style_inputtext" />                            
+                        <p:inputText class = "style_inputtext" valueChangeListener = "#{dataBean.connect('Node Has Chanched')}"  />                      
                         <p:outputLabel value = "Port:" />
-                        <p:inputText class = "style_inputtext"/>
+                        <p:inputText class = "style_inputtext"  valueChangeListener = "#{dataBean.connect('Port Has Changed')}" />
                     </h:panelGrid>
-                    <p:commandButton id = "btn_connect" value = "Connect" class = "style_cmdbutton" />
+                    <p:commandButton id = "btn_connect" value = "Connect" class = "style_cmdbutton" actionListener = "#{dataBean.connect('Connect')}" />
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="center" class = "style_app" >
