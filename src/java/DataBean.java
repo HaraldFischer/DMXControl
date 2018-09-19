@@ -11,6 +11,9 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import java.util.regex.*;
 
 /**
  *
@@ -22,8 +25,10 @@ import javax.faces.context.FacesContext;
 public class DataBean {
 
     private Socket clientSocket = null;
-    private String node = null;
-    private String port = null;
+    @ManagedProperty(value = "#{node}")
+    private String node = "192.168.0.12";
+    @ManagedProperty(value = "#{port}")
+    private String port = "2048";
     
     /**
      * Creates a new instance of DataBean
@@ -67,7 +72,7 @@ public class DataBean {
     }
     
     public void connect(String val){
-        showInfoMessage("Connect");
+        showInfoMessage(val);
     }
     
     public void openSocket(){
