@@ -13,7 +13,6 @@
     </h:head>
     <h:body>
             <link rel="stylesheet" type="text/css" href="styleSheet.css" />
-            
             <p:layout fullPage="true" >
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headerfootertxt">
@@ -31,26 +30,32 @@
                     <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
 
                     </p:messages>
+                    
                     <h:form id = "idform">
                     <h:panelGrid columns = "2" class = "style_endpoint">
+                        
                         <p:outputLabel value = "IP:" />
-                        <p:inputText id = "idnode" class = "style_inputtext" value = "#{dataBean.node}"  >            
-                            <f:validateBean/>
+                        <h:inputText id = "idnode" class = "style_inputtext" value = "#{data.node}"  >            
+                            
                             <h:message for = "idnode" id = "idoutnode" />
-                        </p:inputText>
+                        </h:inputText>
                         
                         
                         <p:outputLabel value = "Port:" />
-                        <p:inputText class = "style_inputtext"  value = "#{dataBean.port}" >
-                            <f:validateBean/>
-                        </p:inputText>
+                        <h:inputText id = "idport" class = "style_inputtext"  value = "#{data.port}" >
+                            
+                            <h:message for = "idport" id = "idoutport" />
+                        </h:inputText>
+                        
                     </h:panelGrid>
-                    </h:form>
-                    <p:commandButton id = "btn_connect" value = "Connect" class = "style_cmdbutton" actionListener = "#{dataBean.connect('Connect')}" >
-                        <f:setPropertyActionListener target = "#{dataBean.node}"    value = "" />
-                        <f:setPropertyActionListener target = "#{dataBean.port}"    value = "" />
-                    </p:commandButton>
                     
+                        <p:commandButton id = "btn_connect" value = "Connect" class = "style_cmdbutton" actionListener = "#{data.connect('')}" >
+                        
+                        <f:setPropertyActionListener target = "#{data.node}"    value = "" />
+                        <f:setPropertyActionListener target = "#{data.port}"    value = "" />
+                        
+                    </p:commandButton>
+                    </h:form>
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="center" class = "style_app" >

@@ -20,7 +20,7 @@ import java.util.regex.*;
  * @author hfischer
  */
 
-@ManagedBean
+@ManagedBean(name = "data")
 @ApplicationScoped
 public class DataBean {
 
@@ -34,6 +34,8 @@ public class DataBean {
      * Creates a new instance of DataBean
      */
     public DataBean() {
+        this.node = "192.168.0.168";
+        this.port = "8192";
     }
     
     public void setClientSocket(Socket socket){
@@ -63,7 +65,8 @@ public class DataBean {
     @PostConstruct
     public void init(){
         readFromFile();
-        
+        node = "192.168.0.111";
+        port = "2048";
     }
     
     @PreDestroy
