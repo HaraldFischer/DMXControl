@@ -25,34 +25,34 @@
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="east" size="20%" header="Settings" collapsible="true">
-                    
+                    <h:form>
                     <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
-                    <p:messages id = "idmessages" showDetail = "true" closable = "true" autoUpdate= "true" > 
-
-                    </p:messages>
                     
-                    <h:form id = "idform">
-                    <h:panelGrid columns = "2" class = "style_endpoint">
+                    <p:messages id = "messages" showDetail = "true" closable = "true" autoUpdate= "true" > 
                         
-                        <p:outputLabel value = "IP:" />
+                    </p:messages>
+                    </h:form>
+                    <h:form id = "idform">
+                    <h:panelGrid id = "idgrid" columns = "2" class = "style_endpoint">
+                        
+                        <p:outputLabel for = "idnode" value = "IP:" />
                         <h:inputText id = "idnode" class = "style_inputtext" value = "#{data.node}"  >            
                             
-                            <h:message for = "idnode" id = "idoutnode" />
+                            <!-- <p:message for = "idnode" id = "idoutnode" display = "text"/> -->
                         </h:inputText>
                         
                         
-                        <p:outputLabel value = "Port:" />
+                        <p:outputLabel for = "idport" value = "Port:" />
                         <h:inputText id = "idport" class = "style_inputtext"  value = "#{data.port}" >
                             
-                            <h:message for = "idport" id = "idoutport" />
+                            <!-- <p:message for = "idport" id = "idoutport" display = "text"/> -->
                         </h:inputText>
                         
                     </h:panelGrid>
-                    
-                        <p:commandButton id = "btn_connect" value = "Connect" class = "style_cmdbutton" actionListener = "#{data.connect('')}" >
+                    <p:commandButton id = "idbtnconnect" value = "Connect" update = "idform" class = "style_cmdbutton" actionListener = "#{data.connect('Connect')}" >
                         
-                        <f:setPropertyActionListener target = "#{data.node}"    value = "" />
-                        <f:setPropertyActionListener target = "#{data.port}"    value = "" />
+                        <f:setPropertyActionListener target = "#{data.node}"    value = "#{data.node}" />
+                        <f:setPropertyActionListener target = "#{data.port}"    value = "#{data.port}" />
                         
                     </p:commandButton>
                     </h:form>

@@ -14,7 +14,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import java.util.regex.*;
-
+import java.io.*;
+import java.util.Properties;
+import javax.faces.context.ExternalContext;
 /**
  *
  * @author hfischer
@@ -34,8 +36,6 @@ public class DataBean {
      * Creates a new instance of DataBean
      */
     public DataBean() {
-        this.node = "192.168.0.168";
-        this.port = "8192";
     }
     
     public void setClientSocket(Socket socket){
@@ -65,8 +65,6 @@ public class DataBean {
     @PostConstruct
     public void init(){
         readFromFile();
-        node = "192.168.0.111";
-        port = "2048";
     }
     
     @PreDestroy
@@ -104,12 +102,48 @@ public class DataBean {
         }
     }
     
-    public void readFromFile(){
-        
+    public boolean readFromFile(){
+        boolean success = false;
+        BufferedReader buffReader = null;
+        try{
+           ExternalContext externalContext = FacesContext.getCurrentInstance().getExternalContext();
+           Properties properties = new Properties();
+           properties.load(externalContext.getResourceAsStream("/WEB-INF/DMXControl.cfg"));
+           node = properties.getProperty("Node");
+           port = properties.getProperty("Port");
+           success = true;
+        }
+        catch (Exception e){
+            showErrMessage(e.getMessage() + "\r\n" + "Loading Defaults");
+            node = "192.168.0.208";
+            port = "4096";
+            success = false;
+        }
+        finally{
+            try{
+                if (buffReader!=null) buffReader.close();
+                buffReader = null;
+            }
+            catch (IOException e){
+                
+            }
+        }
+        return success;
     }
     
     public void writeToFile(){
-        
+        OutputStream os = null;
+        try{
+           Properties properties = new Properties();
+           properties.setProperty("Node", node);
+           properties.setProperty("Port", port);
+           ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
+           os = new FileOutputStream(context.getRealPath("/WEB-INF/DMXControl.cfg"));         
+           properties.store(os, "DMXControl Data");            
+        }
+        catch (IOException e){
+            showErrMessage(e.getMessage());
+        }
     }
     
     public void showInfoMessage(String msg){
