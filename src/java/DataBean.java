@@ -13,10 +13,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import java.util.regex.*;
+import java.util.*;
 import java.io.*;
 import java.util.Properties;
 import javax.faces.context.ExternalContext;
+import javax.validation.constraints.*;
 /**
  *
  * @author hfischer
@@ -28,14 +29,25 @@ public class DataBean {
 
     private Socket clientSocket = null;
     @ManagedProperty(value = "#{node}")
+    @Pattern(regexp = "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.([01]?\\d\\d?|2[0-4]\\d|25[0-5])$", message = "Node Value must be a valid IP Address")
     private String node = "192.168.0.12";
     @ManagedProperty(value = "#{port}")
+    @Pattern(regexp = "^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$", message = "Port Value must be 0 - 65535")
     private String port = "2048";
-    
+    @ManagedProperty(value = "#{channel0}")
+    private int channel0;
     /**
      * Creates a new instance of DataBean
      */
     public DataBean() {
+    }
+    
+    public void setChannel0(int channel0){
+        this.channel0 = channel0;
+    }
+    
+    public int getChannel0(){
+        return this.channel0;
     }
     
     public void setClientSocket(Socket socket){
@@ -65,15 +77,18 @@ public class DataBean {
     @PostConstruct
     public void init(){
         readFromFile();
+        connect();
     }
     
     @PreDestroy
     public void done(){
         writeToFile();
+        closeSocket();
     }
     
-    public void connect(String val){
-        showInfoMessage(val);
+    public void connect(){
+        showInfoMessage("Opening Socket:" + "Node:" + node + " Port:" + port);
+        openSocket();
     }
     
     public void openSocket(){
@@ -100,6 +115,16 @@ public class DataBean {
         catch (Exception e){
             
         }
+    }
+    
+    public void onSliderEvent(int i){
+        /*
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+        String param1 = params.get("What");
+        String param2 = params.get("Value");        
+        */
+        showInfoMessage("Channel 0" + ":" + channel0);
     }
     
     public boolean readFromFile(){

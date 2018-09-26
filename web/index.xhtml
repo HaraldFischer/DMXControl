@@ -36,20 +36,22 @@
                     <h:panelGrid id = "idgrid" columns = "2" class = "style_endpoint">
                         
                         <p:outputLabel for = "idnode" value = "IP:" />
-                        <h:inputText id = "idnode" class = "style_inputtext" value = "#{data.node}"  >            
-                            
-                            <!-- <p:message for = "idnode" id = "idoutnode" display = "text"/> -->
+                        <h:inputText id = "idnode" class = "style_inputtext" value = "#{data.node}" required = "true" requiredMessage = "Node Must Not Be Empty">            
+                            <p:ajax update = "idoutnode"/>
+                            <f:validateBean></f:validateBean>
+                            <h:message for = "idnode" id = "idoutnode"  />
                         </h:inputText>
                         
                         
                         <p:outputLabel for = "idport" value = "Port:" />
-                        <h:inputText id = "idport" class = "style_inputtext"  value = "#{data.port}" >
-                            
-                            <!-- <p:message for = "idport" id = "idoutport" display = "text"/> -->
+                        <h:inputText id = "idport" class = "style_inputtext"  value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty">
+                            <p:ajax update = "idoutport"/>
+                            <f:validateBean></f:validateBean>
+                            <h:message for = "idport" id = "idoutport"  />                            
                         </h:inputText>
                         
                     </h:panelGrid>
-                    <p:commandButton id = "idbtnconnect" value = "Connect" update = "idform" class = "style_cmdbutton" actionListener = "#{data.connect('Connect')}" >
+                    <p:commandButton id = "idbtnconnect" value = "Connect" update = "idform" class = "style_cmdbutton" actionListener = "#{data.connect()}" >
                         
                         <f:setPropertyActionListener target = "#{data.node}"    value = "#{data.node}" />
                         <f:setPropertyActionListener target = "#{data.port}"    value = "#{data.port}" />
@@ -59,14 +61,21 @@
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="center" class = "style_app" >
+
+                    <p:messages id = "messages" showDetail = "true" closable = "true" autoUpdate= "true" > 
+                    </p:messages>                    
+                    
                     <h:panelGrid columns = "9" class = "style_wrapper" >
                     <h:panelGrid columns="1" class = "style_panelslider" >
-                        <c:set var="channel0" value="1" scope = "request" />
+                        
                         <h:outputText id="output0" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id="txt0" value="0" />
                         <p:slider for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%"/>
                         <br></br>
-                        <p:commandButton value = "Channel 1" class = "style_button"  />
+                        <p:commandButton value = "Channel 1" class = "style_button" actionListener = "#{data.onSliderEvent(0)}" >
+                            <f:setPropertyActionListener target = "#{data.channel0}" value = "#{data.channel0}" />
+                        </p:commandButton>
+                        
                     </h:panelGrid>
                     
                     <h:panelGrid columns="1" class = "style_panelslider" >
