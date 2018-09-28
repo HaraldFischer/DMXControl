@@ -18,6 +18,8 @@ import java.io.*;
 import java.util.Properties;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 /**
  *
  * @author hfischer
@@ -42,7 +44,7 @@ public class DataBean {
     public DataBean() {
     }
     
-    public void setChannel0(int channel0){
+    public void setChannel0(int component){
         this.channel0 = channel0;
     }
     
@@ -117,14 +119,14 @@ public class DataBean {
         }
     }
     
-    public void onSliderEvent(int i){
+    public void onSliderEvent(){
         /*
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         String param1 = params.get("What");
         String param2 = params.get("Value");        
         */
-        showInfoMessage("Channel 0" + ":" + channel0);
+        showInfoMessage("Channel 0");
     }
     
     public boolean readFromFile(){
