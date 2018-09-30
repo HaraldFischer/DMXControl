@@ -61,20 +61,23 @@
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="center" class = "style_app" >
-
+                    
                     <p:messages id = "messages" showDetail = "true" closable = "true" autoUpdate= "true" > 
                     </p:messages>                    
                     
                     <h:panelGrid columns = "9" class = "style_wrapper" >
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         
-                        <h:outputText id="output0" class = "style_output" value="0%" escape = "false"/>
-                        <h:inputHidden id="txt0" value = "#{data.channel0}" />
+                        <h:outputText id="output0" class = "style_output" value="0%" />
+                        <h:inputHidden id="txt0"  value = "#{data.channel0}"  >
+                            
+                        </h:inputHidden>
                         <p:slider  for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
                             
                         </p:slider>
                         <br></br>
                         <p:commandButton  value = "Channel 1" class = "style_button" actionListener = "#{data.onSliderEvent()}" oncomplete="PF('dlg').show();" >
+                            
                         </p:commandButton>
                         
                     </h:panelGrid>
@@ -154,7 +157,8 @@
                     </h:panelGrid>
                     
                     <p:dialog widgetVar = "dlg" >
-                        <h:outputText value = "#{data.channel0}" />
+                        <h:outputText value = "#{data.channel0}" >
+                        </h:outputText>
                     </p:dialog>
                     
                 </p:layoutUnit>
