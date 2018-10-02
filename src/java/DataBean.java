@@ -16,6 +16,7 @@ import javax.faces.bean.ManagedProperty;
 import java.util.*;
 import java.io.*;
 import java.util.Properties;
+import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
 
@@ -38,6 +39,10 @@ public class DataBean {
     private String port = "2048";
     @ManagedProperty(value = "#{channel0}")
     private int channel0;
+    
+    @ManagedProperty("#{channel1}")
+    private int channel1;
+    
     /**
      * Creates a new instance of DataBean
      */
@@ -50,6 +55,14 @@ public class DataBean {
     
     public int getChannel0(){
         return this.channel0;
+    }
+    
+    public void setChannel1(int component){
+        this.channel1 = component;
+    }
+    
+    public int getChannel1(){
+        return this.channel1;
     }
     
     public void setClientSocket(Socket socket){
@@ -80,6 +93,8 @@ public class DataBean {
     public void init(){
         readFromFile();
         connect();
+        channel0 = 0;
+        channel1 = 0;
     }
     
     @PreDestroy
@@ -119,15 +134,16 @@ public class DataBean {
         }
     }
     
-    public void onSliderEvent(int component){
+    public void onSliderEvent(int component, int what){
         /*
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("What");
-        String param2 = params.get("Value");        
+        String param1 = params.get("Param");
         */
         
-        showInfoMessage("Channel 0" + component);
+        if (what == 0) channel0 = component;
+        if (what == 1) channel1 = component;
+        showInfoMessage("Channel 0:" + component);
     }
     
     public boolean readFromFile(){
