@@ -68,15 +68,15 @@
                     <h:panelGrid columns = "9" class = "style_wrapper" >
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
-                        <h:outputText id="output0" class = "style_output" value="0%" />
-                        <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}">
+                        <h:outputText id="output0" class = "style_output" value="#{data.channel0}%" />
+                        <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                             
                         </h:inputHidden>
-                        <p:slider  for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
-                            
+                        <p:slider for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
+                            <p:ajax event ="slideEnd"   listener = "#{data.onSlideEnd()}" />
                         </p:slider>
                         <br></br>
-                        <p:commandButton value = "Channel 1" class = "style_button" actionListener = "#{data.onSliderEvent(input0.value,0)}" >
+                        <p:commandButton value = "Channel 1" class = "style_button"  actionListener = "#{data.onSliderEvent(input0.value,0)}" >
                             
                         </p:commandButton>
                         </h:form> 
@@ -84,7 +84,7 @@
                     
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         <h:form id = "idform1" >
-                        <h:outputText id ="output1" class = "style_output" value="0%" escape = "false"/>
+                        <h:outputText id ="output1" class = "style_output" value="#{data.channel1}%" escape = "false"/>
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
                         <p:slider for="txt1" display="output1" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%"/>
                         <br></br>

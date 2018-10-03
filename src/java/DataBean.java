@@ -19,7 +19,7 @@ import java.util.Properties;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
-
+import javax.faces.event.ActionEvent;
 
 /**
  *
@@ -38,8 +38,7 @@ public class DataBean {
     @Pattern(regexp = "^((6553[0-5])|(655[0-2][0-9])|(65[0-4][0-9]{2})|(6[0-4][0-9]{3})|([1-5][0-9]{4})|([0-5]{0,5})|([0-9]{1,4}))$", message = "Port Value must be 0 - 65535")
     private String port = "2048";
     @ManagedProperty(value = "#{channel0}")
-    private int channel0;
-    
+    private int channel0;    
     @ManagedProperty("#{channel1}")
     private int channel1;
     
@@ -134,6 +133,15 @@ public class DataBean {
         }
     }
     
+    public void onSlideStart(){
+        showInfoMessage("slideStart");
+    }
+    
+    public void onSlideEnd(){
+        showInfoMessage("slideEnd");
+        
+    }
+    
     public void onSliderEvent(int component, int what){
         /*
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -141,9 +149,9 @@ public class DataBean {
         String param1 = params.get("Param");
         */
         
-        if (what == 0) channel0 = component;
-        if (what == 1) channel1 = component;
-        showInfoMessage("Channel 0:" + component);
+        //if (what == 0) channel0 = component;
+        //if (what == 1) channel1 = component;
+        showInfoMessage("Channel0 :" + channel0 + " Channel1 :" + channel1);
     }
     
     public boolean readFromFile(){
