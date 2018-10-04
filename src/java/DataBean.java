@@ -102,6 +102,10 @@ public class DataBean {
         closeSocket();
     }
     
+    public void onSlide(ActionEvent ae,UIComponent ui){
+        showInfoMessage("OnSlide");
+    }
+    
     public void connect(){
         showInfoMessage("Opening Socket:" + "Node:" + node + " Port:" + port);
         openSocket();

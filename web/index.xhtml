@@ -9,7 +9,7 @@
 
     <h:head>
         <title>DMXControl</title>
-        
+        <script src="javascript.js" />
     </h:head>
     <h:body>
             <link rel="stylesheet" type="text/css" href="styleSheet.css" />
@@ -72,11 +72,11 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                             
                         </h:inputHidden>
-                        <p:slider for="txt0" display="output0" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
-                            <p:ajax event ="slideEnd"   listener = "#{data.onSlideEnd()}" />
+                        <p:slider for="txt0" display="output0" type = "vertical" widgetVar = "slider0" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
+                            
                         </p:slider>
                         <br></br>
-                        <p:commandButton value = "Channel 1" class = "style_button"  actionListener = "#{data.onSliderEvent(input0.value,0)}" >
+                        <p:commandButton value = "Channel 1" class = "style_button"  onclick = "onSlide();" >
                             
                         </p:commandButton>
                         </h:form> 
