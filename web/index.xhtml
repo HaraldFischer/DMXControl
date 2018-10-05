@@ -69,14 +69,16 @@
                     <h:panelGrid columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
                         <h:outputText id="output0" class = "style_output" value="#{data.channel0}%" />
+                        
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                             
                         </h:inputHidden>
-                        <p:slider for="txt0" display="output0" type = "vertical" widgetVar = "slider0" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" >
-                            
+                        
+                        <p:slider for="txt0" display="output0" type = "vertical" widgetVar = "slider0" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" >
+                            <p:ajax event = "slideEnd"  listener = "#{data.onSlideEnd()}" />
                         </p:slider>
                         <br></br>
-                        <p:commandButton value = "Channel 1" class = "style_button"  onclick = "onSlide();" >
+                        <p:commandButton value = "Flash 1" class = "style_button" actionListener = "#{data.onSliderEvent(input1.value,0)}"  >
                             
                         </p:commandButton>
                         </h:form> 
@@ -86,75 +88,82 @@
                         <h:form id = "idform1" >
                         <h:outputText id ="output1" class = "style_output" value="#{data.channel1}%" escape = "false"/>
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
-                        <p:slider for="txt1" display="output1" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%"/>
+                        <p:slider for="txt1" display="output1" type = "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%"/>
                         <br></br>
-                        <p:commandButton value = "Channel 2" class = "style_button" actionListener = "#{data.onSliderEvent(input1.value,1)}" >
+                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onSliderEvent(input1.value,1)}" >
                             
                         </p:commandButton>
                         </h:form>
                     </h:panelGrid>
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
-                       <c:set var = "channel2" value = "3" scope = "request" />
+                       <h:form id = "idform2">
                        <h:outputText id = "output2" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt2" value = "0" />
-                       <p:slider for = "txt2" display = "output2" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt2" display = "output2" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 3" class = "style_button"  />
+                       <p:commandButton value = "Flash 3" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
-
+                       <h:form id = "idform3">
                        <h:outputText id = "output3" class = "style_output" value = "0%" escape = "false"/>
                        <h:inputHidden id = "txt3" value = "0" />
-                       <p:slider for = "txt3" display = "output3" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt3" display = "output3" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 4" class = "style_button"  />
+                       <p:commandButton value = "Flash 4" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
-                       <c:set var = "channel4" value = "5" scope = "request" />
+                       <h:form id = "idform4">
                        <h:outputText id = "output4" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt4" value = "0" />
-                       <p:slider for = "txt4" display = "output4" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt4" display = "output4" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 4" class = "style_button"  />
+                       <p:commandButton value = "Flash 5" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
-
+                       <h:form id = "idform5">
                        <h:outputText id = "output5" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt5" value = "0" />
-                       <p:slider for = "txt5" display = "output5" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt5" display = "output5" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 6" class = "style_button"  />
+                       <p:commandButton value = "Flash 6" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
-
+                       <h:form id = "idform6">
                        <h:outputText id = "output6" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt6" value = "0" />
-                       <p:slider for = "txt6" display = "output6" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt6" display = "output6" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 7" class = "style_button"  />
+                       <p:commandButton value = "Flash 7" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
-
+                       <h:form id = "idform7">
                        <h:outputText id = "output7" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt7" value = "0" />
-                       <p:slider for = "txt7" display = "output7" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                       <p:slider for = "txt7" display = "output7" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Channel 8" class = "style_button"  />
+                       <p:commandButton value = "Flash 8" class = "style_button"  />
+                       </h:form>
                     </h:panelGrid>
 
-                    <h:panelGrid columns = "1" class = "style_panelslider">
-
+                    <h:panelGrid columns = "1" class = "style_panelslidermaster">
+                        <h:form id = "idform8">
                         <h:outputText id = "output10" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id = "txt8" value = "0" />
-                        <p:slider for = "txt8" display = "output10" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;"   displayTemplate="{value}%" />
+                        <p:slider for = "txt8" display = "output10" type= "vertical" style = "width: 10px;height: 350px;background-color: #AAAAAA;margin-left: 75px;margin-top: 20px;"   displayTemplate="{value}%" />
                         <br></br>
                         <p:commandButton value = "Master" class = "style_button"  />
+                        </h:form>
                     </h:panelGrid>
 
                     </h:panelGrid>

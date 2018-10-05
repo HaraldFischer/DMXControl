@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 
-
 function onSlide(){
-    alert("OnSlide");
+    alert("OnSlide:");
 }

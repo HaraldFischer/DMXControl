@@ -142,7 +142,7 @@ public class DataBean {
     }
     
     public void onSlideEnd(){
-        showInfoMessage("slideEnd");
+        showInfoMessage("slideEnd:");
         
     }
     

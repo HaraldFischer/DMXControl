@@ -39,13 +39,14 @@ and open the template in the editor.
 .style_slider{
     
     margin-left: 20px;
+    margin-top: 40px;
     width:  10px;
     height: 100px;
 
 }
 
 .style_output{
-    margin: 30px;
+    margin: 50px;
     font-size: 25px;
 }
 
@@ -54,13 +55,14 @@ and open the template in the editor.
     height:40px;
     font-size: 15px;
     margin-left: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 1.0);
 }
 
 .style_cmdbutton{
     width:  80%;
     height: 40px;
     margin: 20px;
-    
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 1.0);
 }
 
 .style_inputtext{
@@ -75,6 +77,11 @@ and open the template in the editor.
 }
 
 .style_panelslidermaster{
-    border: #000000 solid 1px;
-    margin: 0px;
+    margin-left:40px;
+    margin-top:20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: 170px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 1.0);
+    text-align: center;
 }
