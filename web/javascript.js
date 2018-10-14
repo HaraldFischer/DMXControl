@@ -5,5 +5,11 @@
  */
 
 function onSlide(){
-    alert("OnSlide:");
+    alert("OnSlide Called");
+}
+
+function onBind(){
+    var $handleEvent = jQuery('#idbtn');
+    $handleEvent.on('click', onBind);
+
 }

@@ -19,7 +19,7 @@ import java.util.Properties;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
-import javax.faces.event.ActionEvent;
+import javax.faces.event.*;
 
 /**
  *
@@ -102,10 +102,6 @@ public class DataBean {
         closeSocket();
     }
     
-    public void onSlide(ActionEvent ae,UIComponent ui){
-        showInfoMessage("OnSlide");
-    }
-    
     public void connect(){
         showInfoMessage("Opening Socket:" + "Node:" + node + " Port:" + port);
         openSocket();
@@ -137,16 +133,16 @@ public class DataBean {
         }
     }
     
-    public void onSlideStart(){
-        showInfoMessage("slideStart");
+    public void onSlideStart(int position){
+        showInfoMessage("slideStart:" + position);
     }
     
-    public void onSlideEnd(){
-        showInfoMessage("slideEnd:");
+    public void onSlideEnd(int position){
+        showInfoMessage("slideEnd:" + position);
         
     }
     
-    public void onSliderEvent(int component, int what){
+    public void onSliderEvent(int pos,int what){
         /*
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
@@ -155,6 +151,7 @@ public class DataBean {
         
         //if (what == 0) channel0 = component;
         //if (what == 1) channel1 = component;
+        
         showInfoMessage("Channel0 :" + channel0 + " Channel1 :" + channel1);
     }
     

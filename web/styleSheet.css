@@ -37,11 +37,12 @@ and open the template in the editor.
 }
 
 .style_slider{
-    
-    margin-left: 20px;
-    margin-top: 40px;
+
     width:  10px;
-    height: 100px;
+    height: 400px;
+    background-color: #AAAAAA;
+    margin-left: 75px;
+    margin-top: 20px;
 
 }
 
