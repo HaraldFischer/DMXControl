@@ -12,31 +12,12 @@
         <script src="javascript.js" />
 
         <script>
-
-        function handler(){
-            alert("Handler");
-        }
-    	/*
-    	$(function(){
-    		$('body').addClass('.style_button').on('click', function(){
-    			 alert('clicked!');
-            });
-    		
-    	});    	
-        */
-        $(document).on('click','body *',function(){
-            var v = $(this).text();
-            alert(v) ;
-        });
-        $(document).on('slide','body',function(){
-           alert("Document Slide") ;
+           
+        $(document).on('click','.style_button',function(){
         });
         /*
-        $(function(){
-            $('body').addClass('.style_slider').on('slide', function(){
-                
-                alert("Value");
-            });
+        $(document).on('slide','body',function(){
+            alert("Slide");
         });
         */
         </script>
@@ -108,7 +89,7 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                             
                         </h:inputHidden>
-                        <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                            <p:slider  onSlide = "#{data.onSliderEvent(event, ui)}" id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
                             
