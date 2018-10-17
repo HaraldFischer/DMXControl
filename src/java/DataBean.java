@@ -19,7 +19,8 @@ import java.util.Properties;
 import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
-import javax.faces.event.FacesEvent;
+import javax.faces.event.ValueChangeEvent;
+
 
 /**
  *
@@ -142,7 +143,7 @@ public class DataBean {
         
     }
     
-    public void onSliderEvent(FacesEvent e,UIComponent ui){
+    public void onSliderEvent(){
         /*
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();

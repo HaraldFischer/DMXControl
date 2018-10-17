@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-function onSlide(){
-    alert("OnSlide Called");
+function onSlide(event){
+    alert("OnSlide Called:" + event);
 }
 
 function onBind(){

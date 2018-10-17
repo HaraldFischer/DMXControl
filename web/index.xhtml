@@ -12,12 +12,39 @@
         <script src="javascript.js" />
 
         <script>
-           
-        $(document).on('click','.style_button',function(){
-        });
         /*
-        $(document).on('slide','body',function(){
-            alert("Slide");
+        $(document).on('click','.style_button',function(){
+            alert($(this).id);
+        });
+        */
+        /*
+        var $x = $('idslide0');
+        alert($x);
+        $x.slider({
+           formater: function(value){
+               return 'Value ' + value;
+           }
+        });
+        */
+        /*
+        $('#idtest').slider({
+           min: 0,
+           max:10,
+           slide: function(event, ui){
+               alert("Slide");
+           },
+           change: function(event, ui) {
+               alert(ui.value);
+           }
+        });
+        */
+        $(document).on('slide','body',function(e, ui){
+            alert(ui.value);
+        }); 
+        
+        /*
+        $('#idform0:idslide0').slider().on('slideStop', function(event){                                                                                                                                                                                                                                                                                                                                                           
+           alert("Slide");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ") ;
         });
         */
         </script>
@@ -26,7 +53,6 @@
     <h:body id = "idbody" >
             <link rel="stylesheet" type="text/css" href="styleSheet.css" />
 
-            
             <p:layout id = "idlayout" fullPage="true" >
 
                 <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headerfootertxt">
@@ -87,14 +113,14 @@
                         </h:outputText>
                         
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
-                            
+                                                        
                         </h:inputHidden>
-                            <p:slider  onSlide = "#{data.onSliderEvent(event, ui)}" id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                        <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
                             
                         <br></br>
-                        <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button"  >
+                        <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button" actionListener = "#{data.onSliderEvent()}" >
                             
                         </p:commandButton>
                         </h:form> 
@@ -106,7 +132,7 @@
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
                         <p:slider for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
                         <br></br>
-                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onSliderEvent(input1.value,1)}" >
+                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onSliderEvent()}" >
                             
                         </p:commandButton>
                         </h:form>
