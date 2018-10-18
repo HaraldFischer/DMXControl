@@ -12,41 +12,11 @@
         <script src="javascript.js" />
 
         <script>
-        /*
-        $(document).on('click','.style_button',function(){
-            alert($(this).id);
-        });
-        */
-        /*
-        var $x = $('idslide0');
-        alert($x);
-        $x.slider({
-           formater: function(value){
-               return 'Value ' + value;
-           }
-        });
-        */
-        /*
-        $('#idtest').slider({
-           min: 0,
-           max:10,
-           slide: function(event, ui){
-               alert("Slide");
-           },
-           change: function(event, ui) {
-               alert(ui.value);
-           }
-        });
-        */
+            
         $(document).on('slide','body',function(e, ui){
-            alert(ui.value);
+            handleEvent([{name:'What', value:'Val 0'}]);
         }); 
         
-        /*
-        $('#idform0:idslide0').slider().on('slideStop', function(event){                                                                                                                                                                                                                                                                                                                                                           
-           alert("Slide");                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ") ;
-        });
-        */
         </script>
         
     </h:head>
@@ -120,9 +90,10 @@
                         </p:slider>
                             
                         <br></br>
-                        <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button" actionListener = "#{data.onSliderEvent()}" >
+                        <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button" actionListener = "#{data.onFlash(0)}" >
                             
                         </p:commandButton>
+                        <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
                         </h:form> 
                     </h:panelGrid>
                     
@@ -132,9 +103,10 @@
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
                         <p:slider for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
                         <br></br>
-                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onSliderEvent()}" >
+                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onFlash(1)}" >
                             
                         </p:commandButton>
+                        
                         </h:form>
                     </h:panelGrid>
                     

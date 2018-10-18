@@ -133,27 +133,20 @@ public class DataBean {
             
         }
     }
-    
-    public void onSlideStart(int position){
-        showInfoMessage("slideStart:" + position);
-    }
-    
-    public void onSlideEnd(int position){
-        showInfoMessage("slideEnd:" + position);
         
+    public void onFlash(int what){
+        showInfoMessage("OnFlash" + what);
     }
     
     public void onSliderEvent(){
-        /*
+        
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("Param");
-        */
+        String param1 = params.get("What");
         
+        showInfoMessage("Channel0 :" + channel0 + " Id: " + param1);
         //if (what == 0) channel0 = component;
         //if (what == 1) channel1 = component;
-        
-        showInfoMessage("Channel0 :" + channel0 + " Channel1 :" + channel1);
     }
     
     public boolean readFromFile(){
