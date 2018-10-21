@@ -40,8 +40,22 @@ public class DataBean {
     private String port = "2048";
     @ManagedProperty(value = "#{channel0}")
     private int channel0;    
-    @ManagedProperty("#{channel1}")
+    @ManagedProperty(value = "#{channel1}")
     private int channel1;
+    @ManagedProperty(value = "#{channel2}")
+    private int channel2;
+    @ManagedProperty(value = "#{channel3}")
+    private int channel3;
+    @ManagedProperty(value = "#{channel4}")
+    private int channel4;
+    @ManagedProperty(value = "#{channel5}")
+    private int channel5;
+    @ManagedProperty(value = "#{channel6}")
+    private int channel6;
+    @ManagedProperty(value = "#{channel7}")
+    private int channel7;
+    @ManagedProperty(value = "#{channelMaster}")
+    private int channelMaster;
     
     /**
      * Creates a new instance of DataBean
@@ -63,6 +77,63 @@ public class DataBean {
     
     public int getChannel1(){
         return this.channel1;
+    }
+
+    public void setChannel2(int component){
+        this.channel2 = component;
+    }
+    
+    public int getChannel2(){
+        return this.channel2;
+    }
+    
+    public void setChannel3(int component){
+        this.channel3 = component;
+    }
+
+    public int getChannel3(){
+        return this.channel3;
+    }
+
+    public void setChannel4(int component){
+        this.channel4 = component;
+    }
+    
+    public int getChannel4(){
+        return this.channel4;
+    }
+
+
+    public void setChannel5(int component){
+        this.channel5 = component;
+    }
+
+    public int getChannel5(){
+        return this.channel5;
+    }
+    
+    public void setChannel6(int component){
+        this.channel6 = component;
+    }
+
+    public int getChannel6(){
+        return this.channel6;
+    }
+    
+    public void setChannel7(int component){
+        this.channel7 = component;
+    }
+    
+    public int getChannel7(){
+        return this.channel7;
+    }
+    
+    public void setChannelMaster(int component){
+        this.channelMaster = component;
+    }
+    
+    public int getChannelMaster(){
+        return this.channelMaster;
     }
     
     public void setClientSocket(Socket socket){
@@ -135,6 +206,7 @@ public class DataBean {
     }
         
     public void onFlash(int what){
+        what +=1;
         showInfoMessage("OnFlash" + what);
     }
     
@@ -142,11 +214,52 @@ public class DataBean {
         
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("What");
-        
-        showInfoMessage("Channel0 :" + channel0 + " Id: " + param1);
-        //if (what == 0) channel0 = component;
-        //if (what == 1) channel1 = component;
+        String param1 = params.get("Channel 1");
+        if (param1 != null){ 
+            showInfoMessage("Channel 1: " + param1);
+            channel0 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel 2");
+        if (param1 != null){
+            showInfoMessage("Channel 2: " + param1);
+            channel1 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel 3");
+        if (param1 != null){
+            showInfoMessage("Channel 3: " + param1);
+            channel2 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel 4");
+        if (param1 != null){
+            showInfoMessage("Channel 4: " + param1);
+            channel3 = Integer.parseInt(param1);            
+        }
+        param1 = params.get("Channel 5");
+        if (param1 != null){
+            showInfoMessage("Channel 5: " + param1);
+            channel4 = Integer.parseInt(param1);            
+        }
+        param1 = params.get("Channel 6");
+        if (param1 != null){
+            showInfoMessage("Channel 6: " + param1);
+            channel5 = Integer.parseInt(param1);            
+        }
+        param1 = params.get("Channel 7");
+        if (param1 != null){
+            showInfoMessage("Channel 7: " + param1);
+            channel6 = Integer.parseInt(param1);            
+        }
+        param1 = params.get("Channel 8");
+        if (param1 != null){
+            showInfoMessage("Channel 8: " + param1);
+            channel7 = Integer.parseInt(param1);            
+        }
+        param1 = params.get("Master");
+        if (param1 != null){
+            showInfoMessage("Master: " + param1);
+            channelMaster = Integer.parseInt(param1);            
+        }
+
     }
     
     public boolean readFromFile(){

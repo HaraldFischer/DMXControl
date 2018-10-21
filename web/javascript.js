@@ -5,7 +5,12 @@
  */
 
 function onSlide(event){
-    alert("OnSlide Called:" + event);
+    var component = event.getComponent();
+    if (component !== null){
+        alert(component);
+    }
+    else alert("Null");
+
 }
 
 function onBind(){

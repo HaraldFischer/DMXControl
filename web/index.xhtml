@@ -12,11 +12,21 @@
         <script src="javascript.js" />
 
         <script>
-            
-        $(document).on('slide','body',function(e, ui){
-            handleEvent([{name:'What', value:'Val 0'}]);
-        }); 
         
+        $(document).on('slide','body',function(e, ui){
+            
+            var id = e.target.id;
+            if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
+            else if (id === 'idform1:idslide1') handleEvent([{name:'Channel 2', value:ui.value}]);
+            else if (id === 'idform2:idslide2') handleEvent([{name:'Channel 3', value:ui.value}]);
+            else if (id === 'idform3:idslide3') handleEvent([{name:'Channel 4', value:ui.value}]);
+            else if (id === 'idform4:idslide4') handleEvent([{name:'Channel 5', value:ui.value}]);
+            else if (id === 'idform5:idslide5') handleEvent([{name:'Channel 6', value:ui.value}]);
+            else if (id === 'idform6:idslide6') handleEvent([{name:'Channel 7', value:ui.value}]);
+            else if (id === 'idform7:idslide7') handleEvent([{name:'Channel 8', value:ui.value}]);
+            else if (id === 'idform8:idslidemaster') handleEvent([{name:'Master', value:ui.value}]);
+                      
+        });
         </script>
         
     </h:head>
@@ -73,8 +83,10 @@
                 <p:layoutUnit id = "idlayoutunit" position="center" class = "style_app" >
                     
                     <p:messages id = "idmessages_center" showDetail = "true" closable = "true" autoUpdate= "true" > 
-                    </p:messages>                    
-                    
+                    </p:messages>        
+                    <h:form>
+                    <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
+                    </h:form>
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper" >
                     <h:panelGrid id = "idgridinner" columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
@@ -93,7 +105,7 @@
                         <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button" actionListener = "#{data.onFlash(0)}" >
                             
                         </p:commandButton>
-                        <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
+                        
                         </h:form> 
                     </h:panelGrid>
                     
@@ -101,7 +113,7 @@
                         <h:form id = "idform1" >
                         <h:outputText id ="output1" class = "style_output" value="#{data.channel1}%" escape = "false"/>
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
-                        <p:slider for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
+                        <p:slider id = 'idslide1' for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
                         <br></br>
                         <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onFlash(1)}" >
                             
@@ -114,9 +126,9 @@
                        <h:form id = "idform2">
                        <h:outputText id = "output2" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt2" value = "0" />
-                       <p:slider for = "txt2" display = "output2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide2' for = "txt2" display = "output2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 3" class = "style_button"  />
+                       <p:commandButton value = "Flash 3" class = "style_button"  actionListener = "#{data.onFlash(2)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -124,9 +136,9 @@
                        <h:form id = "idform3">
                        <h:outputText id = "output3" class = "style_output" value = "0%" escape = "false"/>
                        <h:inputHidden id = "txt3" value = "0" />
-                       <p:slider for = "txt3" display = "output3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide3' for = "txt3" display = "output3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 4" class = "style_button"  />
+                       <p:commandButton value = "Flash 4" class = "style_button" actionListener = "#{data.onFlash(3)}" />
                        </h:form>
                     </h:panelGrid>
 
@@ -134,9 +146,9 @@
                        <h:form id = "idform4">
                        <h:outputText id = "output4" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt4" value = "0" />
-                       <p:slider for = "txt4" display = "output4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide4' for = "txt4" display = "output4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 5" class = "style_button"  />
+                       <p:commandButton value = "Flash 5" class = "style_button"  actionListener = "#{data.onFlash(4)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -144,9 +156,9 @@
                        <h:form id = "idform5">
                        <h:outputText id = "output5" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt5" value = "0" />
-                       <p:slider for = "txt5" display = "output5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide5' for = "txt5" display = "output5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 6" class = "style_button"  />
+                       <p:commandButton value = "Flash 6" class = "style_button"  actionListener = "#{data.onFlash(5)}"/>
                        </h:form>
                     </h:panelGrid>
                     
@@ -154,9 +166,9 @@
                        <h:form id = "idform6">
                        <h:outputText id = "output6" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt6" value = "0" />
-                       <p:slider for = "txt6" display = "output6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide6' for = "txt6" display = "output6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 7" class = "style_button"  />
+                       <p:commandButton value = "Flash 7" class = "style_button"  actionListener = "#{data.onFlash(6)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -164,9 +176,9 @@
                        <h:form id = "idform7">
                        <h:outputText id = "output7" class = "style_output" value="0%" escape = "false"/>
                        <h:inputHidden id = "txt7" value = "0" />
-                       <p:slider for = "txt7" display = "output7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide7' for = "txt7" display = "output7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 8" class = "style_button"  />
+                       <p:commandButton value = "Flash 8" class = "style_button" actionListener = "#{data.onFlash(7)}" />
                        </h:form>
                     </h:panelGrid>
 
@@ -174,9 +186,9 @@
                         <h:form id = "idform8">
                         <h:outputText id = "output10" class = "style_output" value="0%" escape = "false"/>
                         <h:inputHidden id = "txt8" value = "0" />
-                        <p:slider for = "txt8" display = "output10" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                        <p:slider id = 'idslidemaster' for = "txt8" display = "output10" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                         <br></br>
-                        <p:commandButton value = "Master" class = "style_button"  />
+                        <p:commandButton value = "Master" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
                         </h:form>
                     </h:panelGrid>
 
