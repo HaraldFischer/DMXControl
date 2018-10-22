@@ -124,8 +124,8 @@
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform2">
-                       <h:outputText id = "output2" class = "style_output" value="0%" escape = "false"/>
-                       <h:inputHidden id = "txt2" value = "0" />
+                       <h:outputText id = "output2" class = "style_output" value="#{data.channel2}%" escape = "false"/>
+                       <h:inputHidden id = "txt2" value = "#{data.channel2}" binding = "#{input2}" />
                        <p:slider id = 'idslide2' for = "txt2" display = "output2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 3" class = "style_button"  actionListener = "#{data.onFlash(2)}"/>
@@ -134,8 +134,8 @@
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform3">
-                       <h:outputText id = "output3" class = "style_output" value = "0%" escape = "false"/>
-                       <h:inputHidden id = "txt3" value = "0" />
+                       <h:outputText id = "output3" class = "style_output" value = "#{data.channel3}%" escape = "false"/>
+                       <h:inputHidden id = "txt3" value = "#{data.channel3}" binding = "#{input3}" />
                        <p:slider id = 'idslide3' for = "txt3" display = "output3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 4" class = "style_button" actionListener = "#{data.onFlash(3)}" />
@@ -144,8 +144,8 @@
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform4">
-                       <h:outputText id = "output4" class = "style_output" value="0%" escape = "false"/>
-                       <h:inputHidden id = "txt4" value = "0" />
+                           <h:outputText id = "output4" class = "style_output" value="#{data.channel4}%" escape = "false"/>
+                       <h:inputHidden id = "txt4" value = "#{data.channel4}" binding = "#{input4}" />
                        <p:slider id = 'idslide4' for = "txt4" display = "output4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 5" class = "style_button"  actionListener = "#{data.onFlash(4)}"/>
@@ -154,8 +154,8 @@
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform5">
-                       <h:outputText id = "output5" class = "style_output" value="0%" escape = "false"/>
-                       <h:inputHidden id = "txt5" value = "0" />
+                           <h:outputText id = "output5" class = "style_output" value="#{data.channel5}%" escape = "false"/>
+                       <h:inputHidden id = "txt5" value = "#{data.channel5}" binding = "#{input5}" />
                        <p:slider id = 'idslide5' for = "txt5" display = "output5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 6" class = "style_button"  actionListener = "#{data.onFlash(5)}"/>
@@ -164,8 +164,8 @@
                     
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform6">
-                       <h:outputText id = "output6" class = "style_output" value="0%" escape = "false"/>
-                       <h:inputHidden id = "txt6" value = "0" />
+                       <h:outputText id = "output6" class = "style_output" value="#{data.channel6}%" escape = "false"/>
+                       <h:inputHidden id = "txt6" value = "#{data.channel6}" binding = "#{input6}" />
                        <p:slider id = 'idslide6' for = "txt6" display = "output6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 7" class = "style_button"  actionListener = "#{data.onFlash(6)}"/>
@@ -174,8 +174,8 @@
 
                     <h:panelGrid columns = "1" class = "style_panelslider">
                        <h:form id = "idform7">
-                       <h:outputText id = "output7" class = "style_output" value="0%" escape = "false"/>
-                       <h:inputHidden id = "txt7" value = "0" />
+                       <h:outputText id = "output7" class = "style_output" value="#{data.channel7}%" escape = "false"/>
+                       <h:inputHidden id = "txt7" value = "#{data.channel7}" binding = "#{input7}" />
                        <p:slider id = 'idslide7' for = "txt7" display = "output7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "Flash 8" class = "style_button" actionListener = "#{data.onFlash(7)}" />
@@ -184,8 +184,8 @@
 
                     <h:panelGrid columns = "1" class = "style_panelslidermaster">
                         <h:form id = "idform8">
-                        <h:outputText id = "output10" class = "style_output" value="0%" escape = "false"/>
-                        <h:inputHidden id = "txt8" value = "0" />
+                            <h:outputText id = "output10" class = "style_output" value="#{data.channelMaster}%" escape = "false"/>
+                        <h:inputHidden id = "txt8" value = "#{data.channelMaster}" binding = "#{input8}" />
                         <p:slider id = 'idslidemaster' for = "txt8" display = "output10" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                         <br></br>
                         <p:commandButton value = "Master" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>

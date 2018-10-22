@@ -162,16 +162,29 @@ public class DataBean {
     
     @PostConstruct
     public void init(){
-        readFromFile();
+        if (readFromFile() != true)
+            loadDefaults();
         connect();
-        channel0 = 0;
-        channel1 = 0;
     }
     
     @PreDestroy
     public void done(){
         writeToFile();
         closeSocket();
+    }
+    
+    public void loadDefaults(){
+        node = "192.168.0.204";
+        port = "2048";
+        channel0 = 0;
+        channel1 = 0;
+        channel2 = 0;
+        channel3 = 0;
+        channel4 = 0;
+        channel5 = 0;
+        channel6 = 0;
+        channel7 = 0;
+        channelMaster = 0;        
     }
     
     public void connect(){
@@ -207,7 +220,7 @@ public class DataBean {
         
     public void onFlash(int what){
         what +=1;
-        showInfoMessage("OnFlash" + what);
+        showInfoMessage("OnFlash: " + what);
     }
     
     public void onSliderEvent(){
@@ -271,12 +284,19 @@ public class DataBean {
            properties.load(externalContext.getResourceAsStream("/WEB-INF/DMXControl.cfg"));
            node = properties.getProperty("Node");
            port = properties.getProperty("Port");
+           channel0 = Integer.parseInt(properties.getProperty("Channel0"));
+           channel1 = Integer.parseInt(properties.getProperty("Channel1"));
+           channel2 = Integer.parseInt(properties.getProperty("Channel2"));
+           channel3 = Integer.parseInt(properties.getProperty("Channel3"));
+           channel4 = Integer.parseInt(properties.getProperty("Channel4"));
+           channel5 = Integer.parseInt(properties.getProperty("Channel5"));
+           channel6 = Integer.parseInt(properties.getProperty("Channel6"));
+           channel7 = Integer.parseInt(properties.getProperty("Channel7"));
+           channelMaster = Integer.parseInt(properties.getProperty("ChannelMaster"));
            success = true;
         }
         catch (Exception e){
             showErrMessage(e.getMessage() + "\r\n" + "Loading Defaults");
-            node = "192.168.0.208";
-            port = "4096";
             success = false;
         }
         finally{
@@ -297,12 +317,32 @@ public class DataBean {
            Properties properties = new Properties();
            properties.setProperty("Node", node);
            properties.setProperty("Port", port);
+           properties.setProperty("Channel0", Integer.toString(channel0));
+           properties.setProperty("Channel1", Integer.toString(channel1));
+           properties.setProperty("Channel2", Integer.toString(channel2));
+           properties.setProperty("Channel3", Integer.toString(channel3));
+           properties.setProperty("Channel4", Integer.toString(channel4));
+           properties.setProperty("Channel5", Integer.toString(channel5));
+           properties.setProperty("Channel6", Integer.toString(channel6));
+           properties.setProperty("Channel7", Integer.toString(channel7));
+           properties.setProperty("ChannelMaster", Integer.toString(channelMaster));
            ExternalContext context = FacesContext.getCurrentInstance().getExternalContext();
            os = new FileOutputStream(context.getRealPath("/WEB-INF/DMXControl.cfg"));         
            properties.store(os, "DMXControl Data");            
         }
         catch (IOException e){
             showErrMessage(e.getMessage());
+        }
+        finally{
+            try{
+                if (os != null){
+                    os.close();
+                    os = null;
+                }
+            }
+            catch (Exception e){
+                
+            }
         }
     }
     
