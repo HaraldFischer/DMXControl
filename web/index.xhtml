@@ -35,43 +35,46 @@
 
             <p:layout id = "idlayout" fullPage="true" >
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headerfootertxt">
+                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headertxt">
                     <img src="pegasus.png" class = "style_pegasusimage" />
                     DMXControlv1_0
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="100" closable="true" collapsible="true" class = "style_headerfootertxt">
+                <p:layoutUnit position="south" size="300" closable="true" collapsible="true" class = "style_footertxt">
+                    <p:commandButton value = "Open Configuration"  class = "style_btnconfiguration"/>                    
+                    <p:commandButton value = "Save Configuration" class = "style_btnconfiguration"/>
+                    <br></br>
                     Pegasus Systems GmbH
                 </p:layoutUnit>
                 
-                <p:layoutUnit position="east" size="20%" header="Settings" collapsible="true">
+                <p:layoutUnit position="east" size="20%" header="Settings" class = "style_settings" collapsible="true">
                     <h:form>
-                    <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" />
+                    <p:growl id="idmsg" showDetail="true" autoUpdate="true" life="4000" class = "style_message" />
                     
-                    <p:messages id = "idmessages_settings" showDetail = "true" closable = "true" autoUpdate= "true" > 
+                    <p:messages id = "idmessages_settings" showDetail = "true" closable = "true" autoUpdate= "true" class = "style_message" > 
                         
                     </p:messages>
                     </h:form>
                     <h:form id = "idform">
                     <h:panelGrid id = "idgrid" columns = "2" class = "style_endpoint">
                         
-                        <p:outputLabel for = "idnode" value = "IP:" />
-                        <h:inputText id = "idnode" class = "style_inputtext" value = "#{data.node}" required = "true" requiredMessage = "Node Must Not Be Empty">            
+                        <p:outputLabel for = "idnode" value = "IP:" class = "style_label" />
+                        <h:inputText id = "idnode" style = "font-family: calibri" class = "style_inputtext" value = "#{data.node}" required = "true" requiredMessage = "Node Must Not Be Empty">            
                             <p:ajax update = "idoutnode"/>
                             <f:validateBean></f:validateBean>
                             <h:message for = "idnode" id = "idoutnode"  />
                         </h:inputText>
                         
                         
-                        <p:outputLabel for = "idport" value = "Port:" />
-                        <h:inputText id = "idport" class = "style_inputtext"  value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty">
+                        <p:outputLabel for = "idport" value = "Port:" class = "style_label" />
+                        <h:inputText id = "idport" style = "font-family: calibri" class = "style_inputtext"  value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty">
                             <p:ajax update = "idoutport"/>
                             <f:validateBean></f:validateBean>
                             <h:message for = "idport" id = "idoutport"  />                            
                         </h:inputText>
                         
                     </h:panelGrid>
-                    <p:commandButton id = "idbtnconnect" value = "Connect" update = "idform" class = "style_cmdbutton" actionListener = "#{data.connect()}" >
+                    <p:commandButton id = "idbtnconnect" value = "Connect" update = "idform" style = "font-family: calibri" styleClass = "style_cmdbutton" actionListener = "#{data.connect()}" >
                         
                         <f:setPropertyActionListener target = "#{data.node}"    value = "#{data.node}" />
                         <f:setPropertyActionListener target = "#{data.port}"    value = "#{data.port}" />
@@ -82,7 +85,7 @@
                 
                 <p:layoutUnit id = "idlayoutunit" position="center" class = "style_app" >
                     
-                    <p:messages id = "idmessages_center" showDetail = "true" closable = "true" autoUpdate= "true" > 
+                    <p:messages id = "idmessages_center" showDetail = "true" class = "style_message" closable = "true" autoUpdate= "true" > 
                     </p:messages>        
                     <h:form>
                     <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
@@ -102,7 +105,7 @@
                         </p:slider>
                             
                         <br></br>
-                        <p:commandButton id = "idbtn" value = "Flash 1" class = "style_button" actionListener = "#{data.onFlash(0)}" >
+                        <p:commandButton id = "idbtn" value = "Flash 1" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(0)}" >
                             
                         </p:commandButton>
                         
@@ -115,7 +118,7 @@
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
                         <p:slider id = 'idslide1' for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
                         <br></br>
-                        <p:commandButton value = "Flash 2" class = "style_button" actionListener = "#{data.onFlash(1)}" >
+                        <p:commandButton value = "Flash 2" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(1)}" >
                             
                         </p:commandButton>
                         
@@ -128,7 +131,7 @@
                        <h:inputHidden id = "txt2" value = "#{data.channel2}" binding = "#{input2}" />
                        <p:slider id = 'idslide2' for = "txt2" display = "output2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 3" class = "style_button"  actionListener = "#{data.onFlash(2)}"/>
+                       <p:commandButton value = "Flash 3" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(2)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -138,7 +141,7 @@
                        <h:inputHidden id = "txt3" value = "#{data.channel3}" binding = "#{input3}" />
                        <p:slider id = 'idslide3' for = "txt3" display = "output3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 4" class = "style_button" actionListener = "#{data.onFlash(3)}" />
+                       <p:commandButton value = "Flash 4" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(3)}" />
                        </h:form>
                     </h:panelGrid>
 
@@ -148,7 +151,7 @@
                        <h:inputHidden id = "txt4" value = "#{data.channel4}" binding = "#{input4}" />
                        <p:slider id = 'idslide4' for = "txt4" display = "output4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 5" class = "style_button"  actionListener = "#{data.onFlash(4)}"/>
+                       <p:commandButton value = "Flash 5" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(4)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -158,7 +161,7 @@
                        <h:inputHidden id = "txt5" value = "#{data.channel5}" binding = "#{input5}" />
                        <p:slider id = 'idslide5' for = "txt5" display = "output5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 6" class = "style_button"  actionListener = "#{data.onFlash(5)}"/>
+                       <p:commandButton value = "Flash 6" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(5)}"/>
                        </h:form>
                     </h:panelGrid>
                     
@@ -168,7 +171,7 @@
                        <h:inputHidden id = "txt6" value = "#{data.channel6}" binding = "#{input6}" />
                        <p:slider id = 'idslide6' for = "txt6" display = "output6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 7" class = "style_button"  actionListener = "#{data.onFlash(6)}"/>
+                       <p:commandButton value = "Flash 7" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(6)}"/>
                        </h:form>
                     </h:panelGrid>
 
@@ -178,7 +181,7 @@
                        <h:inputHidden id = "txt7" value = "#{data.channel7}" binding = "#{input7}" />
                        <p:slider id = 'idslide7' for = "txt7" display = "output7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
-                       <p:commandButton value = "Flash 8" class = "style_button" actionListener = "#{data.onFlash(7)}" />
+                       <p:commandButton value = "Flash 8" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(7)}" />
                        </h:form>
                     </h:panelGrid>
 
@@ -188,7 +191,7 @@
                         <h:inputHidden id = "txt8" value = "#{data.channelMaster}" binding = "#{input8}" />
                         <p:slider id = 'idslidemaster' for = "txt8" display = "output10" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                         <br></br>
-                        <p:commandButton value = "Master" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
+                        <p:commandButton value = "Master" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
                         </h:form>
                     </h:panelGrid>
 
