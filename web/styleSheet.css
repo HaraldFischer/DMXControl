@@ -16,15 +16,15 @@ and open the template in the editor.
     font-family: calibri;
 }
 
-.style_headertxt{
+.style_headerpeg{
     font-family: calibri;
-    font-size: 30px;
+    font-size: 35px;
     margin-left: 10px;
 }
 
-.style_footertxt{
+.style_headertool{
     font-family: calibri;
-    font-size: 30px;
+    font-size: 20px;
     margin-left: 20px;
 }
 
@@ -32,8 +32,8 @@ and open the template in the editor.
     margin-left: 10px;
     margin-right:10px;
     margin-top:  10px;
-    width : 50px;
-    height: 50px;
+    width : 70px;
+    height: 70px;
 }
 
 .style_wrapper{
@@ -44,14 +44,14 @@ and open the template in the editor.
 
 .style_panelslider{
     width: 5%;
-    height: 50%;    
+    height: 80%;    
     margin: 0px;
 }
 
 .style_slider{
 
     width:  10px;
-    height: 300px;
+    height: 350px;
     background-color: #AAAAAA;
     margin-left: 60px;
     margin-top:  20px;

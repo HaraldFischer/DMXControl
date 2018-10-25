@@ -35,16 +35,16 @@
 
             <p:layout id = "idlayout" fullPage="true" >
 
-                <p:layoutUnit position="north" size="100" resizable="true" closable="true" collapsible="true" class = "style_headertxt">
+                <p:layoutUnit position="north" size="120" resizable="true" closable="true" collapsible="true" class = "style_headerpeg">
                     <img src="pegasus.png" class = "style_pegasusimage" />
-                    DMXControlv1_0
+                    <td>Pegasus Systems</td>
+                    <font size = "10" class= "style_headertool" >
+                    <td>DmxControl 512 Lighting Tool v 1.0 </td>
+                    </font>
                 </p:layoutUnit>
 
-                <p:layoutUnit position="south" size="300" closable="true" collapsible="true" class = "style_footertxt">
-                    <p:commandButton value = "Open Configuration"  class = "style_btnconfiguration"/>                    
-                    <p:commandButton value = "Save Configuration" class = "style_btnconfiguration"/>
-                    <br></br>
-                    Pegasus Systems GmbH
+                <p:layoutUnit position="south" size="0" closable="true" collapsible="true" class = "style_footertxt">
+                    
                 </p:layoutUnit>
                 
                 <p:layoutUnit position="east" size="20%" header="Settings" class = "style_settings" collapsible="true">
@@ -60,7 +60,7 @@
                         
                         <p:outputLabel for = "idnode" value = "IP:" class = "style_label" />
                         <h:inputText id = "idnode" style = "font-family: calibri" class = "style_inputtext" value = "#{data.node}" required = "true" requiredMessage = "Node Must Not Be Empty">            
-                            <p:ajax update = "idoutnode"/>
+                            <p:ajax update = "idoutnode"/> 
                             <f:validateBean></f:validateBean>
                             <h:message for = "idnode" id = "idoutnode"  />
                         </h:inputText>
@@ -68,7 +68,7 @@
                         
                         <p:outputLabel for = "idport" value = "Port:" class = "style_label" />
                         <h:inputText id = "idport" style = "font-family: calibri" class = "style_inputtext"  value = "#{data.port}" required = "true" requiredMessage = "Port Must Not Be Empty">
-                            <p:ajax update = "idoutport"/>
+                            <p:ajax update = "idoutport"/> 
                             <f:validateBean></f:validateBean>
                             <h:message for = "idport" id = "idoutport"  />                            
                         </h:inputText>
