@@ -13,8 +13,16 @@
 
         <script>
         function mouseOver(){
-            alert ("MouseOver");
         }
+
+        $(document).on('mouseover',function(e,ui){
+            var id = e.target.id;    
+            alert("TouchStart:" + id);
+            if (id == 'idform0:idslide0'){
+                
+            }
+        });
+
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
@@ -102,7 +110,7 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
-                        <div onmouseover="mouseOver()" >
+                            <div id = "iddiv" onmouseover="mouseOver()" style = "overflow: hidden" >
                         <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
