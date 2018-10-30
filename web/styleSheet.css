@@ -8,8 +8,9 @@ and open the template in the editor.
     Author     : hfischer
 */
 
+
 .style_app{
-    
+    overflow: hidden;
 }
 
 .style_settings{

@@ -14,15 +14,20 @@
         <script>
         function mouseOver(){
         }
-
+        
         $(document).on('mouseover',function(e,ui){
             var id = e.target.id;    
-            alert("TouchStart:" + id);
+            
+            document.body.style.overflow = 'hidden';
             if (id == 'idform0:idslide0'){
-                
+                alert(id);
             }
         });
 
+        document.addEventListener("scroll", function(e){
+            
+        },true);
+        
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
@@ -40,7 +45,8 @@
         </script>
         
     </h:head>
-    <h:body id = "idbody"  >
+    <h:body id = "idbody" >
+        
             <link rel="stylesheet" type="text/css" href="styleSheet.css" />
 
             <p:layout id = "idlayout" fullPage="true" >
@@ -110,7 +116,7 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
-                            <div id = "iddiv" onmouseover="mouseOver()" style = "overflow: hidden" >
+                        <div id = "iddiv" onmouseover="mouseOver()"  >
                         <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
@@ -211,7 +217,6 @@
                 </p:layoutUnit>
 
             </p:layout>
-        
         
     </h:body>
 </html>
