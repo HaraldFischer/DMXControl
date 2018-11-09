@@ -12,22 +12,85 @@
         <script src="javascript.js" />
 
         <script>
+
+        var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
         function mouseOver(){
+            
         }
         
+        
         $(document).on('mouseover',function(e,ui){
-            var id = e.target.id;    
+            var id = e.target.id;
             
-            document.body.style.overflow = 'hidden';
-            if (id == 'idform0:idslide0'){
-                alert(id);
+            if (id === 'idform0:idslide0'){
+                //document.body.style.touchVerticalScroll = false;
+                var element = document.getElementById('idform0:idslide0');
+                //alert(id);
+                disableScroll();
+            }
+            if (id === 'idform1:idslide1'){
+                disableScroll();
+            }
+            else{
+                
             }
         });
-
-        document.addEventListener("scroll", function(e){
-            
-        },true);
         
+       
+        function onTouchMove(e){
+            var id = e.target.id;
+            if (id === "idform0:idslide0"){
+                alert("TouchMove");
+            }
+        }
+        
+        function preventDefault(e) {
+            e = e || window.event;
+            if (e.preventDefault)
+                e.preventDefault();
+            e.returnValue = false;  
+        }
+
+        function disableScroll(){
+            if (window.addEventListener) // older FF
+                window.addEventListener('DOMMouseScroll', preventDefault, false);
+            
+            window.onwheel = preventDefault; // modern standard
+            window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+            window.ontouchmove  = preventDefault; // mobile
+            document.onkeydown  = preventDefaultForScrollKeys;            
+            
+            //window.onscroll = preventDefault;
+            
+        }
+        
+        function enableScroll() {
+            if (window.removeEventListener)
+                window.removeEventListener('DOMMouseScroll', preventDefault, false);
+            
+            window.onmousewheel = document.onmousewheel = null; 
+            window.onwheel = null; 
+            window.ontouchmove = null;  
+            document.onkeydown = null;  
+            
+            //window.onscroll = null;
+        }        
+        
+        function preventDefaultForScrollKeys(e) {
+            if (keys[e.keyCode]) {
+                preventDefault(e);
+                return false;
+            }
+        }
+       
+        document.addEventListener("scroll", function(e){   
+            //e.preventDefault();
+            //e.target.stopPropagation();
+            //alert("Scroll");
+            //return false;
+        },false);
+
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
@@ -106,7 +169,8 @@
                     <h:form>
                     <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
                     </h:form>
-                    <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper" >
+                    
+                    <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
                     <h:panelGrid id = "idgridinner" columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
                         <h:outputText id="output0" class = "style_output" value="#{data.channel0}%" >
@@ -116,7 +180,7 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
-                        <div id = "iddiv" onmouseover="mouseOver()"  >
+                        <div id = "iddiv"  onmouseover="mouseOver()"  >
                         <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
@@ -213,7 +277,7 @@
                     </h:panelGrid>
 
                     </h:panelGrid>
-                    
+
                 </p:layoutUnit>
 
             </p:layout>
