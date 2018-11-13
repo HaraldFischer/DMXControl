@@ -20,31 +20,35 @@
         }
         
         
-        $(document).on('mouseover',function(e,ui){
+        $(document).on('touchmove',function(e,ui){
             var id = e.target.id;
             
+            
             if (id === 'idform0:idslide0'){
+                //disableScroll();
                 //document.body.style.touchVerticalScroll = false;
-                var element = document.getElementById('idform0:idslide0');
-                //alert(id);
-                disableScroll();
+                //var element = document.getElementById('idform0:idslide0');
+                alert(e.target.valueOf());
+                callInfoMessage([{name:'TouchMove', value: ui.value}]);
+                
             }
             if (id === 'idform1:idslide1'){
-                disableScroll();
+                callInfoMessage();
             }
             else{
                 
             }
         });
         
-       
+        /*
         function onTouchMove(e){
             var id = e.target.id;
             if (id === "idform0:idslide0"){
                 alert("TouchMove");
+                
             }
         }
-        
+        */
         function preventDefault(e) {
             e = e || window.event;
             if (e.preventDefault)
@@ -58,7 +62,7 @@
             
             window.onwheel = preventDefault; // modern standard
             window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-            window.ontouchmove  = preventDefault; // mobile
+            //window.ontouchmove  = onTouchMove; // mobile
             document.onkeydown  = preventDefaultForScrollKeys;            
             
             //window.onscroll = preventDefault;
@@ -168,6 +172,7 @@
                     </p:messages>        
                     <h:form>
                     <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
+                    <p:remoteCommand name = "callInfoMessage" actionListener = "#{data.onTouchEvent()}" />
                     </h:form>
                     
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
@@ -182,7 +187,6 @@
                         </h:inputHidden>
                         <div id = "iddiv"  onmouseover="mouseOver()"  >
                         <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
-                            
                         </p:slider>
                         </div>
                         <br></br>

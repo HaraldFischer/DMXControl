@@ -223,6 +223,17 @@ public class DataBean {
         showInfoMessage("OnFlash: " + what);
     }
     
+    public void onTouchEvent(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+        String param1 = params.get("TouchMove");
+        if (param1 != null){ 
+            showInfoMessage("Channel 1: " + param1);
+            //channel0 = Integer.parseInt(param1);
+        }
+        else showInfoMessage("TouchMove");
+    }
+    
     public void onSliderEvent(){
         
         FacesContext fc = FacesContext.getCurrentInstance();
@@ -272,7 +283,14 @@ public class DataBean {
             showInfoMessage("Master: " + param1);
             channelMaster = Integer.parseInt(param1);            
         }
-
+    }
+    
+    public void slideStart(){
+        showInfoMessage("SlideStart");
+    }
+    
+    public void slideEnd(){
+        showInfoMessage("SlideEnd");
     }
     
     public boolean readFromFile(){
