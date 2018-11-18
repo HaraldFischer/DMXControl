@@ -229,7 +229,7 @@ public class DataBean {
         String param1 = params.get("TouchMove");
         if (param1 != null){ 
             showInfoMessage("Channel 1: " + param1);
-            //channel0 = Integer.parseInt(param1);
+            channel0 = Integer.parseInt(param1);
         }
         else showInfoMessage("TouchMove");
     }

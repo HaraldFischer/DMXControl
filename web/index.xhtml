@@ -13,42 +13,30 @@
 
         <script>
 
-        var keys = {37: 1, 38: 1, 39: 1, 40: 1};
-
-        function mouseOver(){
-            
-        }
-        
-        
-        $(document).on('touchmove',function(e,ui){
+        var keys = {37: 1, 38: 1, 39: 1, 40: 1};        
+       
+        $(document).on('mousemove touchmove DOMMouseScroll',function(e,ui){
             var id = e.target.id;
-            
-            
+            alert(e.type);
             if (id === 'idform0:idslide0'){
                 //disableScroll();
-                //document.body.style.touchVerticalScroll = false;
+                //callInfoMessage();
                 //var element = document.getElementById('idform0:idslide0');
-                alert(e.target.valueOf());
-                callInfoMessage([{name:'TouchMove', value: ui.value}]);
                 
+                
+                //callInfoMessage([{name:'TouchMove', value: e.value}]);
+                //alert("Action:" + val);
             }
             if (id === 'idform1:idslide1'){
-                callInfoMessage();
+                //enableScroll();
+                //callInfoMessage();
+                //alert("Action:" + val);
             }
             else{
                 
             }
         });
         
-        /*
-        function onTouchMove(e){
-            var id = e.target.id;
-            if (id === "idform0:idslide0"){
-                alert("TouchMove");
-                
-            }
-        }
-        */
         function preventDefault(e) {
             e = e || window.event;
             if (e.preventDefault)
@@ -62,11 +50,8 @@
             
             window.onwheel = preventDefault; // modern standard
             window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-            //window.ontouchmove  = onTouchMove; // mobile
+            window.ontouchmove  = preventDefault; // mobile
             document.onkeydown  = preventDefaultForScrollKeys;            
-            
-            //window.onscroll = preventDefault;
-            
         }
         
         function enableScroll() {
@@ -77,8 +62,7 @@
             window.onwheel = null; 
             window.ontouchmove = null;  
             document.onkeydown = null;  
-            
-            //window.onscroll = null;
+
         }        
         
         function preventDefaultForScrollKeys(e) {
@@ -87,16 +71,20 @@
                 return false;
             }
         }
-       
-        document.addEventListener("scroll", function(e){   
-            //e.preventDefault();
-            //e.target.stopPropagation();
-            //alert("Scroll");
-            //return false;
-        },false);
-
+        /*
+        $(document).on('DOMMouseScroll','body', function(e,ui){   
+            e.preventDefault();
+            e.stopPropagation();
+            
+            alert("Scroll");
+            e.returnValue = false;
+        });
+        */
+        //window.addEventListener('DOMMouseScroll', function(e,ui){alert("Scroll");});
+        
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
+            
             if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
             else if (id === 'idform1:idslide1') handleEvent([{name:'Channel 2', value:ui.value}]);
             else if (id === 'idform2:idslide2') handleEvent([{name:'Channel 3', value:ui.value}]);
@@ -106,7 +94,7 @@
             else if (id === 'idform6:idslide6') handleEvent([{name:'Channel 7', value:ui.value}]);
             else if (id === 'idform7:idslide7') handleEvent([{name:'Channel 8', value:ui.value}]);
             else if (id === 'idform8:idslidemaster') handleEvent([{name:'Master', value:ui.value}]);
-                      
+            
         });
         
         </script>
@@ -185,7 +173,7 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
-                        <div id = "iddiv"  onmouseover="mouseOver()"  >
+                        <div id = "iddiv" >
                         <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                         </p:slider>
                         </div>
