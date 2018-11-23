@@ -226,12 +226,12 @@ public class DataBean {
     public void onTouchEvent(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("TouchMove");
+        String param1 = params.get("Block");
         if (param1 != null){ 
-            showInfoMessage("Channel 1: " + param1);
-            channel0 = Integer.parseInt(param1);
+            showInfoMessage("Block: " + param1);
+            //channel0 = Integer.parseInt(param1);
         }
-        else showInfoMessage("TouchMove");
+        else showInfoMessage("");
     }
     
     public void onSliderEvent(){

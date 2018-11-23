@@ -14,26 +14,44 @@
         <script>
 
         var keys = {37: 1, 38: 1, 39: 1, 40: 1};        
-       
-        $(document).on('mousemove touchmove DOMMouseScroll',function(e,ui){
+        
+        $(document).on('mousemove DOMMouseScroll','body',function(e,ui){
             var id = e.target.id;
-            alert(e.type);
+            var slider = document.getElementByClassName('slider0')[0];
+            
+            /*
             if (id === 'idform0:idslide0'){
                 //disableScroll();
-                //callInfoMessage();
-                //var element = document.getElementById('idform0:idslide0');
+                document.documentElement.style.overflow = 'hidden';
+                callInfoMessage([{name: 'Name', value: e.type }]);    
                 
-                
-                //callInfoMessage([{name:'TouchMove', value: e.value}]);
-                //alert("Action:" + val);
             }
             if (id === 'idform1:idslide1'){
-                //enableScroll();
-                //callInfoMessage();
-                //alert("Action:" + val);
+                preventDefault(e);
+                callInfoMessage([{name:'Name', value:e.type}]);
             }
             else{
                 
+            }
+            */
+        });
+        
+        window.blockScroll = false;
+        
+        $(window).on('touchstart', function(e){
+            if (e.target.id === 'idform0:idslide0'){
+                blockScroll = true;
+            }
+        });
+        
+        $(window).on('touchend', function(e){
+            blockScroll = false;
+        });
+        
+        $(window).on('touchmove', function(e){
+            if (blockScroll){
+                e.preventDefault();
+                callInfoMessage([{name:'Block', value: 'Value'}]);
             }
         });
         
@@ -51,7 +69,9 @@
             window.onwheel = preventDefault; // modern standard
             window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
             window.ontouchmove  = preventDefault; // mobile
-            document.onkeydown  = preventDefaultForScrollKeys;            
+            document.onkeydown  = preventDefaultForScrollKeys; 
+            document.documentElement.style.overflow = 'hidden';  // firefox, chrome
+            document.body.scroll = "no"; // ie only
         }
         
         function enableScroll() {
@@ -71,17 +91,7 @@
                 return false;
             }
         }
-        /*
-        $(document).on('DOMMouseScroll','body', function(e,ui){   
-            e.preventDefault();
-            e.stopPropagation();
-            
-            alert("Scroll");
-            e.returnValue = false;
-        });
-        */
-        //window.addEventListener('DOMMouseScroll', function(e,ui){alert("Scroll");});
-        
+                
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             
@@ -173,8 +183,9 @@
                         <h:inputHidden id="txt0" value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
-                        <div id = "iddiv" >
-                        <p:slider id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                        <div id = "iddiv0" >
+                        <p:slider class = "slider0" id = 'idslide0' for="txt0" display="output0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                            
                         </p:slider>
                         </div>
                         <br></br>
@@ -189,7 +200,9 @@
                         <h:form id = "idform1" >
                         <h:outputText id ="output1" class = "style_output" value="#{data.channel1}%" escape = "false"/>
                         <h:inputHidden id="txt1" value="#{data.channel1}" binding = "#{input1}" />
+                        <div id = "iddiv1" >
                         <p:slider id = 'idslide1' for="txt1" display="output1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
+                        </div>
                         <br></br>
                         <p:commandButton value = "Flash 2" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(1)}" >
                             
