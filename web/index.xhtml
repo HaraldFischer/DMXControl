@@ -14,12 +14,10 @@
         <script>
 
         var keys = {37: 1, 38: 1, 39: 1, 40: 1};        
-        
+        /*
         $(document).on('mousemove DOMMouseScroll','body',function(e,ui){
             var id = e.target.id;
-            var slider = document.getElementByClassName('slider0')[0];
             
-            /*
             if (id === 'idform0:idslide0'){
                 //disableScroll();
                 document.documentElement.style.overflow = 'hidden';
@@ -33,28 +31,40 @@
             else{
                 
             }
-            */
+        });
+        */
+       
+        $(document).ready(function(){
+            var element = document.getElementById('idform0:idslide0');
+            
+            element.addEventListener('mouseover', function (e){
+                e.preventDefault();
+                callInfoMessage([{name:'Block', value: #{data.getChannel0()} }]);
+        }, false);
+            
         });
         
         window.blockScroll = false;
-        
+        /*
         $(window).on('touchstart', function(e){
             if (e.target.id === 'idform0:idslide0'){
                 blockScroll = true;
+                disableScroll();
             }
         });
         
         $(window).on('touchend', function(e){
             blockScroll = false;
+            enableScroll();
         });
         
         $(window).on('touchmove', function(e){
             if (blockScroll){
-                e.preventDefault();
+                //e.preventDefault();
                 callInfoMessage([{name:'Block', value: 'Value'}]);
             }
         });
-        
+        */
         function preventDefault(e) {
             e = e || window.event;
             if (e.preventDefault)
