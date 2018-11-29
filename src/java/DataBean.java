@@ -226,12 +226,52 @@ public class DataBean {
     public void onTouchEvent(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("Block");
+        String param1 = params.get("Channel0");
         if (param1 != null){ 
-            showInfoMessage("Block: " + param1);
-            //channel0 = Integer.parseInt(param1);
+            showInfoMessage("Channel 1: " + param1);
+            channel0 = Integer.parseInt(param1);
         }
-        else showInfoMessage("");
+        param1 = params.get("Channel1");
+        if (param1 != null){
+            showInfoMessage("Channel 2: " + param1);
+            channel1 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel2");
+        if (param1 != null){
+            showInfoMessage("Channel 3: " + param1);
+            channel2 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel3");
+        if (param1 != null){
+            showInfoMessage("Channel 4: " + param1);
+            channel3 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel4");
+        if (param1 != null){
+            showInfoMessage("Channel 5: " + param1);
+            channel4 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel5");
+        if (param1 != null){
+            showInfoMessage("Channel 6: " + param1);
+            channel5 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel6");
+        if (param1 != null){
+            showInfoMessage("Channel 7: " + param1);
+            channel6 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Channel7");
+        if (param1 != null){
+            showInfoMessage("Channel 8: " + param1);
+            channel7 = Integer.parseInt(param1);
+        }
+        param1 = params.get("Master");
+        if (param1 != null){
+            showInfoMessage("Master: " + param1);
+            channelMaster = Integer.parseInt(param1);
+        }        
+        
     }
     
     public void onSliderEvent(){

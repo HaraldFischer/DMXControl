@@ -13,112 +13,89 @@
 
         <script>
 
-        var keys = {37: 1, 38: 1, 39: 1, 40: 1};        
-        /*
-        $(document).on('mousemove DOMMouseScroll','body',function(e,ui){
-            var id = e.target.id;
-            
-            if (id === 'idform0:idslide0'){
-                //disableScroll();
-                document.documentElement.style.overflow = 'hidden';
-                callInfoMessage([{name: 'Name', value: e.type }]);    
-                
-            }
-            if (id === 'idform1:idslide1'){
-                preventDefault(e);
-                callInfoMessage([{name:'Name', value:e.type}]);
-            }
-            else{
-                
-            }
-        });
-        */
-       
         $(document).ready(function(){
-            var element = document.getElementById('idform0:idslide0');
-            
-            element.addEventListener('mouseover', function (e){
+            var element = document.getElementById('idform0:idslide0'); 
+            element.addEventListener('mousemove', function (e){
                 e.preventDefault();
+                var x = e.clientX;
+                var y = e.clientY;
                 var val = document.getElementById('idform0:idtxt0');
-                callInfoMessage([{name:'Block', value: val.value }]);
+                handleTouchEvent([{name:'Channel0', value: val.value }]);
+            
+            element = document.getElementById('idform1:idslide1');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform1:idtxt1');
+                handleTouchEvent([{name: 'Channel1', value: val.value}]);
+            });
+
+            element = document.getElementById('idform2:idslide2');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform2:idtxt2');
+                handleTouchEvent([{name: 'Channel2', value: val.value}]);
+            });
+
+            element = document.getElementById('idform3:idslide3');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform3:idtxt3');
+                handleTouchEvent([{name: 'Channel3', value: val.value}]);
+            });
+
+            element = document.getElementById('idform4:idslide4');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform4:idtxt4');
+                handleTouchEvent([{name: 'Channel4', value: val.value}]);
+            });
+
+            element = document.getElementById('idform5:idslide5');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform5:idtxt5');
+                handleTouchEvent([{name: 'Channel5', value: val.value}]);
+            });
+            
+            element = document.getElementById('idform6:idslide6');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform6:idtxt6');
+                handleTouchEvent([{name: 'Channel6', value: val.value}]);
+            });
+            
+            element = document.getElementById('idform7:idslide7');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform7:idtxt7');
+                handleTouchEvent([{name: 'Channel7', value: val.value}]);
+            });
+            
+            element = document.getElementById('idform8:idslidemaster');
+            element.addEventListener('mousemove', function(e){
+                e.preventDefault();
+                var val = document.getElementById('idform8:idtxt8');
+                handleTouchEvent([{name: 'Master', value: val.value}]);
+            });
+
         }, false);
             
         });
-        /*
-        function sliderChange(val){
-            document.getElementById('idform0:idoutput0').innerHTML = val;
-        }
-        */
-        window.blockScroll = false;
-        /*
-        $(window).on('touchstart', function(e){
-            if (e.target.id === 'idform0:idslide0'){
-                blockScroll = true;
-                disableScroll();
-            }
-        });
-        
-        $(window).on('touchend', function(e){
-            blockScroll = false;
-            enableScroll();
-        });
-        
-        $(window).on('touchmove', function(e){
-            if (blockScroll){
-                //e.preventDefault();
-                callInfoMessage([{name:'Block', value: 'Value'}]);
-            }
-        });
-        */
-        function preventDefault(e) {
-            e = e || window.event;
-            if (e.preventDefault)
-                e.preventDefault();
-            e.returnValue = false;  
-        }
 
-        function disableScroll(){
-            if (window.addEventListener) // older FF
-                window.addEventListener('DOMMouseScroll', preventDefault, false);
-            
-            window.onwheel = preventDefault; // modern standard
-            window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
-            window.ontouchmove  = preventDefault; // mobile
-            document.onkeydown  = preventDefaultForScrollKeys; 
-            document.documentElement.style.overflow = 'hidden';  // firefox, chrome
-            document.body.scroll = "no"; // ie only
-        }
-        
-        function enableScroll() {
-            if (window.removeEventListener)
-                window.removeEventListener('DOMMouseScroll', preventDefault, false);
-            
-            window.onmousewheel = document.onmousewheel = null; 
-            window.onwheel = null; 
-            window.ontouchmove = null;  
-            document.onkeydown = null;  
 
-        }        
-        
-        function preventDefaultForScrollKeys(e) {
-            if (keys[e.keyCode]) {
-                preventDefault(e);
-                return false;
-            }
-        }
                 
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             
-            if (id === 'idform0:idslide0') handleEvent([{name:'Channel 1', value:ui.value}]);
-            else if (id === 'idform1:idslide1') handleEvent([{name:'Channel 2', value:ui.value}]);
-            else if (id === 'idform2:idslide2') handleEvent([{name:'Channel 3', value:ui.value}]);
-            else if (id === 'idform3:idslide3') handleEvent([{name:'Channel 4', value:ui.value}]);
-            else if (id === 'idform4:idslide4') handleEvent([{name:'Channel 5', value:ui.value}]);
-            else if (id === 'idform5:idslide5') handleEvent([{name:'Channel 6', value:ui.value}]);
-            else if (id === 'idform6:idslide6') handleEvent([{name:'Channel 7', value:ui.value}]);
-            else if (id === 'idform7:idslide7') handleEvent([{name:'Channel 8', value:ui.value}]);
-            else if (id === 'idform8:idslidemaster') handleEvent([{name:'Master', value:ui.value}]);
+            if (id === 'idform0:idslide0') handleSlideEvent([{name:'Channel 1', value:ui.value}]);
+            else if (id === 'idform1:idslide1') handleSlideEvent([{name:'Channel 2', value:ui.value}]);
+            else if (id === 'idform2:idslide2') handleSlideEvent([{name:'Channel 3', value:ui.value}]);
+            else if (id === 'idform3:idslide3') handleSlideEvent([{name:'Channel 4', value:ui.value}]);
+            else if (id === 'idform4:idslide4') handleSlideEvent([{name:'Channel 5', value:ui.value}]);
+            else if (id === 'idform5:idslide5') handleSlideEvent([{name:'Channel 6', value:ui.value}]);
+            else if (id === 'idform6:idslide6') handleSlideEvent([{name:'Channel 7', value:ui.value}]);
+            else if (id === 'idform7:idslide7') handleSlideEvent([{name:'Channel 8', value:ui.value}]);
+            else if (id === 'idform8:idslidemaster') handleSlideEvent([{name:'Master', value:ui.value}]);
             
         });
         
@@ -184,8 +161,8 @@
                     <p:messages id = "idmessages_center" showDetail = "true" class = "style_message" closable = "true" autoUpdate= "true" > 
                     </p:messages>        
                     <h:form>
-                    <p:remoteCommand name = "handleEvent" actionListener = "#{data.onSliderEvent()}" />
-                    <p:remoteCommand name = "callInfoMessage" actionListener = "#{data.onTouchEvent()}" />
+                    <p:remoteCommand name = "handleSlideEvent" actionListener = "#{data.onSliderEvent()}" />
+                    <p:remoteCommand name = "handleTouchEvent" actionListener = "#{data.onTouchEvent()}" />
                     </h:form>
                     
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
