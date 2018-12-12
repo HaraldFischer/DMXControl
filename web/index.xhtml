@@ -11,16 +11,16 @@
         <title>DmxControl</title>
         <script src="javascript.js" />
 
-        <script>
-
+        <script>        
+        
         $(document).ready(function(){
             var element = document.getElementById('idform0:idslide0'); 
             element.addEventListener('mousemove', function (e){
                 e.preventDefault();
-                var x = e.clientX;
-                var y = e.clientY;
+                //var x = PF('varSlider0');
                 var val = document.getElementById('idform0:idtxt0');
-                handleTouchEvent([{name:'Channel0', value: val.value }]);
+                handleTouchEvent([{name:'Event', value: val.value}]);
+            });    
             
             element = document.getElementById('idform1:idslide1');
             element.addEventListener('mousemove', function(e){
@@ -80,8 +80,6 @@
 
         }, false);
             
-        });
-
 
                 
         $(document).on('slide','body',function(e, ui){
@@ -176,7 +174,7 @@
                                                         
                         </h:inputHidden>
                         <div id = "iddiv0" >
-                        <p:slider class = "slider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                        <p:slider widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
                             
                         </p:slider>
                         </div>

@@ -271,7 +271,10 @@ public class DataBean {
             showInfoMessage("Master: " + param1);
             channelMaster = Integer.parseInt(param1);
         }        
-        
+        param1 = params.get("Event");
+        if (param1 != null){
+            showInfoMessage("Event:" + param1);
+        }
     }
     
     public void onSliderEvent(){
