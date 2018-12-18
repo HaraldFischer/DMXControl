@@ -17,62 +17,66 @@
             var element = document.getElementById('idform0:idslide0'); 
             element.addEventListener('mousemove', function (e){
                 e.preventDefault();
-                //var x = PF('varSlider0');
-                var val = document.getElementById('idform0:idtxt0');
-                handleTouchEvent([{name:'Event', value: val.value}]);
+                var offset = $('#iddiv0').offset();
+                var y = Math.round(e.clientY - offset.top);
+                var compHeight = $('#iddiv0').height();
+                y = Math.round((y*100)/compHeight);
+                $('#idside0').val(y);
+                handleTouchEvent([{name:'Event', value: y}]);
+                
             });    
             
             element = document.getElementById('idform1:idslide1');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform1:idtxt1');
                 handleTouchEvent([{name: 'Channel1', value: val.value}]);
             });
 
             element = document.getElementById('idform2:idslide2');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform2:idtxt2');
                 handleTouchEvent([{name: 'Channel2', value: val.value}]);
             });
 
             element = document.getElementById('idform3:idslide3');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform3:idtxt3');
                 handleTouchEvent([{name: 'Channel3', value: val.value}]);
             });
 
             element = document.getElementById('idform4:idslide4');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform4:idtxt4');
                 handleTouchEvent([{name: 'Channel4', value: val.value}]);
             });
 
             element = document.getElementById('idform5:idslide5');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform5:idtxt5');
                 handleTouchEvent([{name: 'Channel5', value: val.value}]);
             });
             
             element = document.getElementById('idform6:idslide6');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform6:idtxt6');
                 handleTouchEvent([{name: 'Channel6', value: val.value}]);
             });
             
             element = document.getElementById('idform7:idslide7');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform7:idtxt7');
                 handleTouchEvent([{name: 'Channel7', value: val.value}]);
             });
             
             element = document.getElementById('idform8:idslidemaster');
-            element.addEventListener('mousemove', function(e){
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
                 var val = document.getElementById('idform8:idtxt8');
                 handleTouchEvent([{name: 'Master', value: val.value}]);
@@ -170,14 +174,15 @@
                             
                         </h:outputText>
                         
-                        <h:inputHidden id="idtxt0" value = "#{data.channel0}" binding = "#{input0}" >
+                        <h:inputHidden id="idtxt0"  value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
                         <div id = "iddiv0" >
-                        <p:slider widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%" >
+                        <p:slider class = "classSlide0" widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%"   >
                             
                         </p:slider>
                         </div>
+                        
                         <br></br>
                         <p:commandButton id = "idbtn" value = "Flash 1" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(0)}" >
                             
