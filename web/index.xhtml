@@ -15,13 +15,13 @@
         
         $(document).ready(function(){
             var element = document.getElementById('idform0:idslide0'); 
-            element.addEventListener('mousemove', function (e){
+            element.addEventListener('touchmove', function (e){
                 e.preventDefault();
                 var offset = $('#iddiv0').offset();
                 var y = Math.round(e.clientY - offset.top);
                 var compHeight = $('#iddiv0').height();
                 y = Math.round((y*100)/compHeight);
-                $('#idside0').val(y);
+                PF('varSlider0').setValue(100-y);
                 handleTouchEvent([{name:'Event', value: y}]);
                 
             });    
