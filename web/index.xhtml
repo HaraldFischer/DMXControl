@@ -18,10 +18,10 @@
             element.addEventListener('touchmove', function (e){
                 e.preventDefault();
                 var offset = $('#iddiv0').offset();
-                var y = Math.round(e.clientY - offset.top);
+                var y = e.targetTouches[0].clientY - offset.top;
                 var compHeight = $('#iddiv0').height();
-                y = Math.round((y*100)/compHeight);
-                PF('varSlider0').setValue(100-y);
+                y = 100 - Math.round((y*100)/compHeight);
+                PF('varSlider0').setValue(y);
                 handleTouchEvent([{name:'Event', value: y}]);
                 
             });    

@@ -274,6 +274,7 @@ public class DataBean {
         param1 = params.get("Event");
         if (param1 != null){
             showInfoMessage("Event:" + param1);
+            channel0 = Integer.parseInt(param1);
         }
     }
     
