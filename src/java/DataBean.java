@@ -20,7 +20,7 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
 import javax.faces.event.ValueChangeEvent;
-
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -275,6 +275,7 @@ public class DataBean {
         if (param1 != null){
             showInfoMessage("Event:" + param1);
             channel0 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform0:idoutput0");
         }
     }
     

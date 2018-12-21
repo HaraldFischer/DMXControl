@@ -22,6 +22,8 @@
                 var compHeight = $('#iddiv0').height();
                 y = 100 - Math.round((y*100)/compHeight);
                 PF('varSlider0').setValue(y);
+                document.getElementById('idform0:idoutput0').value = y;
+                
                 handleTouchEvent([{name:'Event', value: y}]);
                 
             });    
@@ -170,7 +172,7 @@
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
                     <h:panelGrid id = "idgridinner" columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
-                        <h:outputText id="idoutput0" class = "style_output" value="#{data.channel0}%" >
+                        <h:outputText id="idoutput0"  class = "style_output" value="#{data.channel0}%" >
                             
                         </h:outputText>
                         
