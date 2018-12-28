@@ -57,22 +57,21 @@ and open the template in the editor.
 
 .style_slider{
 
-    width:  20px;
-    height: 800px;
+    width:  10px;
+    height: 400px;
     background-color: #AAAAAA;
-    margin-left: 60px;
+    margin-left: 30px;
     margin-top:  20px;
-    
 }
 
 .style_output{
-    margin: 50px;
+    margin: 30px;
     font-size: 25px;
     font-family: calibri;
 }
 
 .style_button{
-    width: 120px;
+    width: 60px;
     height:40px;
     font-size: 15px;
     font-family: calibri;
