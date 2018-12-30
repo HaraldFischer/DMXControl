@@ -273,7 +273,7 @@
                         <h:form id = "idform8">
                             <h:outputText id = "idoutput10" class = "style_output" value="#{data.channelMaster}%" escape = "false"/>
                         <h:inputHidden id = "idtxt8" value = "#{data.channelMaster}" binding = "#{input8}" />
-                        <p:slider id = 'idslidemaster' for = "idtxt8" display = "idoutput10" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                        <p:slider id = 'idslidemaster' for = "idtxt8" display = "idoutput10" type= "vertical" styleClass = "style_slidermaster"   displayTemplate="{value}%" />
                         <br></br>
                         <p:commandButton value = "#M" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
                         </h:form>
