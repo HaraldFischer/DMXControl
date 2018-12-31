@@ -17,10 +17,12 @@
             var element = document.getElementById('idform0:idslide0'); 
             element.addEventListener('touchmove', function (e){
                 e.preventDefault();
-                var offset = $('#iddiv0').offset();
+                var offset = $(this).offset();
                 var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $('#iddiv0').height();
+                var compHeight = $(this).height();
                 y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
                 PF('varSlider0').setValue(y);
                 document.getElementById('idform0:idoutput0').value = y;
                 

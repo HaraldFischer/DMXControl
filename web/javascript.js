@@ -18,3 +18,9 @@ function onBind(){
     $handleEvent.on('click', onBind);
 
 }
+
+function checkValue(val){
+    if (val > 100) return 100;
+    else if (val<0) return 0;
+    else return val;
+}
