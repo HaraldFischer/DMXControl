@@ -21,6 +21,8 @@ import javax.faces.context.ExternalContext;
 import javax.validation.constraints.*;
 import javax.faces.event.ValueChangeEvent;
 import org.primefaces.context.RequestContext;
+import org.primefaces.event.SlideEndEvent;
+
 
 /**
  *
@@ -331,12 +333,12 @@ public class DataBean {
         }
     }
     
-    public void slideStart(){
-        showInfoMessage("SlideStart");
-    }
     
-    public void slideEnd(){
-        showInfoMessage("SlideEnd");
+    public void slideEnd(SlideEndEvent e){
+        
+        int y = e.getValue();
+        String str = Integer.toString(y);
+        showInfoMessage("SlideEnd " + str);
     }
     
     public boolean readFromFile(){

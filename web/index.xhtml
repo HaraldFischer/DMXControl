@@ -52,7 +52,7 @@
             });
 
             element = document.getElementById('idform4:idslide4');
-            element.addEventListener('touchmove', function(e){
+            element.addEventListener('touchmove', function(e){showInfoMessage("SlideEnd");
                 e.preventDefault();
                 var val = document.getElementById('idform4:idtxt4');
                 handleTouchEvent([{name: 'Channel4', value: val.value}]);
@@ -88,8 +88,16 @@
 
         }, false);
             
-
-                
+        /*
+        $(document).on('slideStart','body',function(){
+            alert("Start");
+        });
+        
+        $(document).on('slideEnd','body',function(){
+            alert("End");
+        });
+        */
+       
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
             
@@ -167,9 +175,9 @@
                     
                     <p:messages id = "idmessages_center" showDetail = "true" class = "style_message" closable = "true" autoUpdate= "true" > 
                     </p:messages>        
-                    <h:form>
-                    <p:remoteCommand name = "handleSlideEvent" actionListener = "#{data.onSliderEvent()}" />
-                    <p:remoteCommand name = "handleTouchEvent" actionListener = "#{data.onTouchEvent()}" />
+                    <h:form id = "idform_rc" >
+                        <p:remoteCommand name = "handleSlideEvent" process = "@this" update = "idform_rc" async = "true" actionListener = "#{data.onSliderEvent()}" />
+                        <p:remoteCommand name = "handleTouchEvent" process = "@this" update = "idform_rc" async = "true" actionListener = "#{data.onTouchEvent()}" />
                     </h:form>
                     
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
@@ -183,9 +191,10 @@
                                                         
                         </h:inputHidden>
                         <div id = "iddiv0" >
-                        <p:slider class = "classSlide0" widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%"   >
-                            
-                        </p:slider>
+                            <p:slider class = "classSlide0" widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%"   >
+                                <p:ajax event = "slideEnd" listener = "#{data.slideEnd}" />
+                                
+                            </p:slider>
                         </div>
                         
                         <br></br>
