@@ -26,77 +26,140 @@
                 PF('varSlider0').setValue(y);
                 document.getElementById('idform0:idoutput0').value = y;
                 
-                handleTouchEvent([{name:'Event', value: y}]);
+                handleTouchEvent([{name:'Channel 0', value: y}]);
                 
             });    
             
             element = document.getElementById('idform1:idslide1');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform1:idtxt1');
-                handleTouchEvent([{name: 'Channel1', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider1').setValue(y);
+                document.getElementById('idform1:idoutput1').value = y;
+                
+                handleTouchEvent([{name:'Channel 1', value: y}]);
+
             });
 
             element = document.getElementById('idform2:idslide2');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform2:idtxt2');
-                handleTouchEvent([{name: 'Channel2', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider2').setValue(y);
+                document.getElementById('idform2:idoutput2').value = y;
+                
+                handleTouchEvent([{name:'Channel 2', value: y}]);
+
             });
 
             element = document.getElementById('idform3:idslide3');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform3:idtxt3');
-                handleTouchEvent([{name: 'Channel3', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider3').setValue(y);
+                document.getElementById('idform3:idoutput3').value = y;
+                
+                handleTouchEvent([{name:'Channel 3', value: y}]);
+
             });
 
             element = document.getElementById('idform4:idslide4');
-            element.addEventListener('touchmove', function(e){showInfoMessage("SlideEnd");
+            element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform4:idtxt4');
-                handleTouchEvent([{name: 'Channel4', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider4').setValue(y);
+                document.getElementById('idform4:idoutput4').value = y;
+                
+                handleTouchEvent([{name:'Channel 4', value: y}]);
+
             });
 
             element = document.getElementById('idform5:idslide5');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform5:idtxt5');
-                handleTouchEvent([{name: 'Channel5', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider5').setValue(y);
+                document.getElementById('idform5:idoutput5').value = y;
+                
+                handleTouchEvent([{name:'Channel 5', value: y}]);
+
             });
             
             element = document.getElementById('idform6:idslide6');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform6:idtxt6');
-                handleTouchEvent([{name: 'Channel6', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider6').setValue(y);
+                document.getElementById('idform6:idoutput6').value = y;
+                
+                handleTouchEvent([{name:'Channel 6', value: y}]);
+
             });
             
             element = document.getElementById('idform7:idslide7');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform7:idtxt7');
-                handleTouchEvent([{name: 'Channel7', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider7').setValue(y);
+                document.getElementById('idform7:idoutput7').value = y;
+                
+                handleTouchEvent([{name:'Channel 7', value: y}]);
+
             });
             
             element = document.getElementById('idform8:idslidemaster');
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var val = document.getElementById('idform8:idtxt8');
-                handleTouchEvent([{name: 'Master', value: val.value}]);
+                var offset = $(this).offset();
+                var y = e.targetTouches[0].clientY - offset.top;
+                var compHeight = $(this).height();
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                
+                PF('varSlider8').setValue(y);
+                document.getElementById('idform8:idoutput8').value = y;
+                
+                handleTouchEvent([{name:'Master', value: y}]);
+
             });
 
         }, false);
             
-        /*
-        $(document).on('slideStart','body',function(){
-            alert("Start");
-        });
-        
-        $(document).on('slideEnd','body',function(){
-            alert("End");
-        });
-        */
        
         $(document).on('slide','body',function(e, ui){
             var id = e.target.id;
@@ -183,22 +246,21 @@
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >
                     <h:panelGrid id = "idgridinner" columns="1" class = "style_panelslider" >
                         <h:form id = "idform0">
-                        <h:outputText id="idoutput0"  class = "style_output" value="#{data.channel0}%" >
+                        <h:outputText id="idoutput0" class = "style_output" value="#{data.channel0}%" >
                             
                         </h:outputText>
-                        
+                        <br/>
                         <h:inputHidden id="idtxt0"  value = "#{data.channel0}" binding = "#{input0}" >
                                                         
                         </h:inputHidden>
                         <div id = "iddiv0" >
                             <p:slider class = "classSlide0" widgetVar = "varSlider0" id = 'idslide0' for="idtxt0" display="idoutput0" type = "vertical" styleClass = "style_slider" displayTemplate="{value}%"   >
-                                <p:ajax event = "slideEnd" listener = "#{data.slideEnd}" />
                                 
                             </p:slider>
                         </div>
                         
                         <br></br>
-                        <p:commandButton id = "idbtn" value = "#1" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(0)}" >
+                        <p:commandButton id = "idbtn" value = "#1" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(0)}" >
                             
                         </p:commandButton>
                         
@@ -210,7 +272,7 @@
                         <h:outputText id ="idoutput1" class = "style_output" value="#{data.channel1}%" escape = "false"/>
                         <h:inputHidden id="idtxt1" value="#{data.channel1}" binding = "#{input1}" />
                         <div id = "iddiv1" >
-                        <p:slider id = 'idslide1' for="idtxt1" display="idoutput1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
+                        <p:slider id = 'idslide1' widgetVar = "varSlider1"  for="idtxt1" display="idoutput1" type = "vertical" styleClass = "style_slider"   displayTemplate="{value}%"/>
                         </div>
                         <br></br>
                         <p:commandButton value = "#2" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(1)}" >
@@ -224,7 +286,7 @@
                        <h:form id = "idform2">
                        <h:outputText id = "idoutput2" class = "style_output" value="#{data.channel2}%" escape = "false"/>
                        <h:inputHidden id = "idtxt2" value = "#{data.channel2}" binding = "#{input2}" />
-                       <p:slider id = 'idslide2' for = "idtxt2" display = "idoutput2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide2' widgetVar = "varSlider2" for = "idtxt2" display = "idoutput2" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#3" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(2)}"/>
                        </h:form>
@@ -234,7 +296,7 @@
                        <h:form id = "idform3">
                        <h:outputText id = "idoutput3" class = "style_output" value = "#{data.channel3}%" escape = "false"/>
                        <h:inputHidden id = "idtxt3" value = "#{data.channel3}" binding = "#{input3}" />
-                       <p:slider id = 'idslide3' for = "idtxt3" display = "idoutput3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide3' widgetVar = "varSlider3" for = "idtxt3" display = "idoutput3" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#4" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(3)}" />
                        </h:form>
@@ -244,7 +306,7 @@
                        <h:form id = "idform4">
                            <h:outputText id = "idoutput4" class = "style_output" value="#{data.channel4}%" escape = "false"/>
                        <h:inputHidden id = "idtxt4" value = "#{data.channel4}" binding = "#{input4}" />
-                       <p:slider id = 'idslide4' for = "idtxt4" display = "idoutput4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide4' widgetVar = "varSlider4" for = "idtxt4" display = "idoutput4" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#5" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(4)}"/>
                        </h:form>
@@ -254,7 +316,7 @@
                        <h:form id = "idform5">
                            <h:outputText id = "idoutput5" class = "style_output" value="#{data.channel5}%" escape = "false"/>
                        <h:inputHidden id = "idtxt5" value = "#{data.channel5}" binding = "#{input5}" />
-                       <p:slider id = 'idslide5' for = "idtxt5" display = "idoutput5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide5' widgetVar = "varSlider5" for = "idtxt5" display = "idoutput5" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#6" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(5)}"/>
                        </h:form>
@@ -264,7 +326,7 @@
                        <h:form id = "idform6">
                        <h:outputText id = "idoutput6" class = "style_output" value="#{data.channel6}%" escape = "false"/>
                        <h:inputHidden id = "idtxt6" value = "#{data.channel6}" binding = "#{input6}" />
-                       <p:slider id = 'idslide6' for = "idtxt6" display = "idoutput6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide6' widgetVar = "varSlider6" for = "idtxt6" display = "idoutput6" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#7" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(6)}"/>
                        </h:form>
@@ -274,7 +336,7 @@
                        <h:form id = "idform7">
                        <h:outputText id = "idoutput7" class = "style_output" value="#{data.channel7}%" escape = "false"/>
                        <h:inputHidden id = "idtxt7" value = "#{data.channel7}" binding = "#{input7}" />
-                       <p:slider id = 'idslide7' for = "idtxt7" display = "idoutput7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
+                       <p:slider id = 'idslide7' widgetVar = "varSlider7" for = "idtxt7" display = "idoutput7" type= "vertical" styleClass = "style_slider"   displayTemplate="{value}%" />
                        <br></br>
                        <p:commandButton value = "#8" style = "font-family: calibri" class = "style_button" actionListener = "#{data.onFlash(7)}" />
                        </h:form>
@@ -284,9 +346,9 @@
                         <h:form id = "idform8">
                             <h:outputText id = "idoutput10" class = "style_output" value="#{data.channelMaster}%" escape = "false"/>
                         <h:inputHidden id = "idtxt8" value = "#{data.channelMaster}" binding = "#{input8}" />
-                        <p:slider id = 'idslidemaster' for = "idtxt8" display = "idoutput10" type= "vertical" styleClass = "style_slidermaster"   displayTemplate="{value}%" />
+                        <p:slider id = 'idslidemaster' widgetVar = "varSlider8" for = "idtxt8" display = "idoutput10" type= "vertical" styleClass = "style_slidermaster"   displayTemplate="{value}%" />
                         <br></br>
-                        <p:commandButton value = "#M" style = "font-family: calibri" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
+                        <p:commandButton value = "#M" style = "font-family: calibri;color:#FF0000" class = "style_button"  actionListener = "#{data.onFlash(8)}"/>
                         </h:form>
                     </h:panelGrid>
 

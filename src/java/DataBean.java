@@ -228,57 +228,60 @@ public class DataBean {
     public void onTouchEvent(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("Channel0");
+        String param1 = params.get("Channel 0");
         if (param1 != null){ 
-            showInfoMessage("Channel 1: " + param1);
-            channel0 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel1");
-        if (param1 != null){
-            showInfoMessage("Channel 2: " + param1);
-            channel1 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel2");
-        if (param1 != null){
-            showInfoMessage("Channel 3: " + param1);
-            channel2 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel3");
-        if (param1 != null){
-            showInfoMessage("Channel 4: " + param1);
-            channel3 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel4");
-        if (param1 != null){
-            showInfoMessage("Channel 5: " + param1);
-            channel4 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel5");
-        if (param1 != null){
-            showInfoMessage("Channel 6: " + param1);
-            channel5 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel6");
-        if (param1 != null){
-            showInfoMessage("Channel 7: " + param1);
-            channel6 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Channel7");
-        if (param1 != null){
-            showInfoMessage("Channel 8: " + param1);
-            channel7 = Integer.parseInt(param1);
-        }
-        param1 = params.get("Master");
-        if (param1 != null){
-            showInfoMessage("Master: " + param1);
-            channelMaster = Integer.parseInt(param1);
-        }        
-        param1 = params.get("Event");
-        if (param1 != null){
-            showInfoMessage("Event:" + param1);
+            showInfoMessage("Channel 1: " + param1 + "%");
             channel0 = Integer.parseInt(param1);
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
         }
+        param1 = params.get("Channel 1");
+        if (param1 != null){
+            showInfoMessage("Channel 2: " + param1 + "%");
+            channel1 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform1:idoutput1");
+        }
+        param1 = params.get("Channel 2");
+        if (param1 != null){
+            showInfoMessage("Channel 3: " + param1 + "%");
+            channel2 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform2:idoutput2");
+        }
+        param1 = params.get("Channel 3");
+        if (param1 != null){
+            showInfoMessage("Channel 4: " + param1 + "%");
+            channel3 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform3:idoutput3");
+        }
+        param1 = params.get("Channel 4");
+        if (param1 != null){
+            showInfoMessage("Channel 5: " + param1 + "%");
+            channel4 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform4:idoutput4");
+        }
+        param1 = params.get("Channel 5");
+        if (param1 != null){
+            showInfoMessage("Channel 6: " + param1 + "%");
+            channel5 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform5:idoutput5");
+        }
+        param1 = params.get("Channel 6");
+        if (param1 != null){
+            showInfoMessage("Channel 7: " + param1 + "%");
+            channel6 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform6:idoutput6");
+        }
+        param1 = params.get("Channel 7");
+        if (param1 != null){
+            showInfoMessage("Channel 8: " + param1 + "%");
+            channel7 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform7:idoutput7");
+        }
+        param1 = params.get("Master");
+        if (param1 != null){
+            showInfoMessage("Master: " + param1 + "%");
+            channelMaster = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform8:idoutput8");
+        }        
     }
     
     public void onSliderEvent(){
@@ -287,59 +290,60 @@ public class DataBean {
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         String param1 = params.get("Channel 1");
         if (param1 != null){ 
-            showInfoMessage("Channel 1: " + param1);
+            showInfoMessage("Channel 1: " + param1 + "%");
             channel0 = Integer.parseInt(param1);
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
         }
         param1 = params.get("Channel 2");
         if (param1 != null){
-            showInfoMessage("Channel 2: " + param1);
+            showInfoMessage("Channel 2: " + param1 + "%");
             channel1 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform1:idoutput1");
         }
         param1 = params.get("Channel 3");
         if (param1 != null){
-            showInfoMessage("Channel 3: " + param1);
+            showInfoMessage("Channel 3: " + param1 + "%");
             channel2 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform2:idoutput2");
         }
         param1 = params.get("Channel 4");
         if (param1 != null){
-            showInfoMessage("Channel 4: " + param1);
-            channel3 = Integer.parseInt(param1);            
+            showInfoMessage("Channel 4: " + param1 + "%");
+            channel3 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform3:idoutput3");
         }
         param1 = params.get("Channel 5");
         if (param1 != null){
-            showInfoMessage("Channel 5: " + param1);
+            showInfoMessage("Channel 5: " + param1 + "%");
             channel4 = Integer.parseInt(param1);            
+            RequestContext.getCurrentInstance().update("idform4:idoutput4");
         }
         param1 = params.get("Channel 6");
         if (param1 != null){
-            showInfoMessage("Channel 6: " + param1);
+            showInfoMessage("Channel 6: " + param1 + "%");
             channel5 = Integer.parseInt(param1);            
+            RequestContext.getCurrentInstance().update("idform5:idoutput5");
         }
         param1 = params.get("Channel 7");
         if (param1 != null){
-            showInfoMessage("Channel 7: " + param1);
+            showInfoMessage("Channel 7: " + param1 + "%");
             channel6 = Integer.parseInt(param1);            
+            RequestContext.getCurrentInstance().update("idform6:idoutput6");
         }
         param1 = params.get("Channel 8");
         if (param1 != null){
-            showInfoMessage("Channel 8: " + param1);
+            showInfoMessage("Channel 8: " + param1 + "%");
             channel7 = Integer.parseInt(param1);            
+            RequestContext.getCurrentInstance().update("idform7:idoutput7");
         }
         param1 = params.get("Master");
         if (param1 != null){
-            showInfoMessage("Master: " + param1);
+            showInfoMessage("Master: " + param1 + "%");
             channelMaster = Integer.parseInt(param1);            
+            RequestContext.getCurrentInstance().update("idform8:idoutput8");
         }
     }
     
-    
-    public void slideEnd(SlideEndEvent e){
-        
-        int y = e.getValue();
-        String str = Integer.toString(y);
-        showInfoMessage("SlideEnd " + str);
-    }
     
     public boolean readFromFile(){
         boolean success = false;
