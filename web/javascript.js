@@ -24,3 +24,9 @@ function checkValue(val){
     else if (val<0) return 0;
     else return val;
 }
+
+function showChanges(changes){
+    for (i = 0; i < changes.length; i++){
+        alert(changes[i].clientY);
+    }
+}

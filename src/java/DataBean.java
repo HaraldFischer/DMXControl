@@ -233,6 +233,7 @@ public class DataBean {
             showInfoMessage("Channel 1: " + param1 + "%");
             channel0 = Integer.parseInt(param1);
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
+            
         }
         param1 = params.get("Channel 1");
         if (param1 != null){
@@ -280,7 +281,7 @@ public class DataBean {
         if (param1 != null){
             showInfoMessage("Master: " + param1 + "%");
             channelMaster = Integer.parseInt(param1);
-            RequestContext.getCurrentInstance().update("idform8:idoutput8");
+            RequestContext.getCurrentInstance().update("idform8:idoutput10");
         }        
     }
     
@@ -340,7 +341,7 @@ public class DataBean {
         if (param1 != null){
             showInfoMessage("Master: " + param1 + "%");
             channelMaster = Integer.parseInt(param1);            
-            RequestContext.getCurrentInstance().update("idform8:idoutput8");
+            RequestContext.getCurrentInstance().update("idform8:idoutput10");
         }
     }
     
