@@ -14,20 +14,20 @@
         <script>        
         
         $(document).ready(function(){
+            var startY = null;
             var element = document.getElementById('idform0:idslide0'); 
             element.addEventListener('touchmove', function (e){
                 e.preventDefault();
                 var offset = $(this).offset();
-                var y = e.changedTouches[0].clientY - offset.top;
+                var y = e.targetTouches[0].clientY - offset.top;
                 var compHeight = $(this).height();
-                y = 100 - Math.round((y*100)/compHeight);
-                y = checkValue(y);
                 
+                y = Math.trunc(100 - (y*100)/compHeight);
+                y = checkValue(y);  
                 PF('varSlider0').setValue(y);
                 document.getElementById('idform0:idoutput0').value = y;
-                
                 handleTouchEvent([{name:'Channel 0', value: y}]);
-            });    
+            },false);    
             
             element = document.getElementById('idform1:idslide1');
             element.addEventListener('touchmove', function(e){

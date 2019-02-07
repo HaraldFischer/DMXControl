@@ -6,6 +6,7 @@
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.RequestScoped;
 import java.net.Socket;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -22,6 +23,7 @@ import javax.validation.constraints.*;
 import javax.faces.event.ValueChangeEvent;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SlideEndEvent;
+
 
 
 /**
@@ -230,15 +232,15 @@ public class DataBean {
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         String param1 = params.get("Channel 0");
         if (param1 != null){ 
-            showInfoMessage("Channel 1: " + param1 + "%");
+            showInfoMessage("Touch 1: " + param1 + "%");
             channel0 = Integer.parseInt(param1);
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
-            
         }
         param1 = params.get("Channel 1");
         if (param1 != null){
             showInfoMessage("Channel 2: " + param1 + "%");
             channel1 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update("idform1:idtxt1");
             RequestContext.getCurrentInstance().update("idform1:idoutput1");
         }
         param1 = params.get("Channel 2");

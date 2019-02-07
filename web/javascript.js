@@ -26,7 +26,5 @@ function checkValue(val){
 }
 
 function showChanges(changes){
-    for (i = 0; i < changes.length; i++){
-        alert(changes[i].clientY);
-    }
+    alert(changes[i].pageY);
 }
