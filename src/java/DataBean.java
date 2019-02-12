@@ -227,13 +227,24 @@ public class DataBean {
         showInfoMessage("OnFlash: " + what);
     }
     
+    public void display(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
+        String param1 = params.get("val");
+        if (param1 != null){
+            channel0 = Integer.parseInt(param1);
+            RequestContext.getCurrentInstance().update(":idform0:idoutput0");
+            showWarnMessage(param1);
+        }
+    }
+    
     public void onTouchEvent(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         String param1 = params.get("Channel 0");
         if (param1 != null){ 
             showInfoMessage("Touch 1: " + param1 + "%");
-            channel0 = Integer.parseInt(param1);
+            channel0 = Integer.parseInt(param1);            
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
         }
         param1 = params.get("Channel 1");
@@ -284,7 +295,8 @@ public class DataBean {
             showInfoMessage("Master: " + param1 + "%");
             channelMaster = Integer.parseInt(param1);
             RequestContext.getCurrentInstance().update("idform8:idoutput10");
-        }        
+        } 
+        
     }
     
     public void onSliderEvent(){

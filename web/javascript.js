@@ -22,9 +22,9 @@ function onBind(){
 function checkValue(val){
     if (val > 100) return 100;
     else if (val<0) return 0;
-    else return val;
+    return val;
 }
 
 function showChanges(changes){
-    alert(changes[i].pageY);
+    
 }
