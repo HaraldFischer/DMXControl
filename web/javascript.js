@@ -13,6 +13,7 @@ function onSlide(event){
 
 }
 
+
 function onBind(){
     var $handleEvent = jQuery('#idbtn');
     $handleEvent.on('click', onBind);
@@ -23,6 +24,11 @@ function checkValue(val){
     if (val > 100) return 100;
     else if (val<0) return 0;
     return val;
+}
+
+function deltaY(delta){
+    if (deltaY <= 50) return false;
+    else return true;
 }
 
 function showChanges(changes){

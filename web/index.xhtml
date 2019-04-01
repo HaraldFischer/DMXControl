@@ -6,7 +6,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jsp/jstl/core">
-
+      
+    
     <h:head>
         <title>DmxControl</title>
         <script src="javascript.js" />
@@ -14,21 +15,52 @@
         <script>        
         
         $(document).ready(function(){
-            var startY = null;
-            var element = document.getElementById('idform0:idslide0'); 
+            
+            var conditionObj = "Ready";
+
+            function waitForCondition(){
+                return new Promise(function (resolve,reject) {
+                    if (conditionObj === "Ready"){
+                        resolve("Ready");
+                    }
+                    else{ 
+                        reject("Busy");
+                    }
+                });
+            }
+            
+            var element = document.getElementById('idform0:idslide0');
+            var offset = null;
+            var compHeight = null
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
             element.addEventListener('touchmove', function (e){
                 e.preventDefault();
-                //e.stopPropagation();
-                var offset = $(this).offset();
+                var clientY = e.targetTouches[0].clientY;
                 var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
-                
-                y = Math.round(100 - (y*100)/compHeight);
-                y = checkValue(y);  
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
                 PF('varSlider0').setValue(y);
                 document.getElementById("idform0:idoutput0").attribute = y;
                 handleTouchEvent([{name:'Channel 0', value: y}]);
-            },false);    
+                    
+            });  
+            
+            element.addEventListener('touchend', function(e){
+                
+                var y = e.changedTouches[0].clientY;
+                y = y - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                PF('varSlider0').setValue(y);
+                document.getElementById("idform0:idoutput0").attribute = y;
+                handleTouchEvent([{name:'Channel 0', value: y}]);
+               
+            });
             
             element = document.getElementById('idform1:idslide1');
             element.addEventListener('touchmove', function(e){
@@ -235,12 +267,13 @@
                 </p:layoutUnit>
                 
                 <p:layoutUnit id = "idlayoutunit" position="center" class = "style_app" >
-                    
+                    <!--
                     <p:messages id = "idmessages_center" showDetail = "true" class = "style_message" closable = "true" autoUpdate= "true" > 
                     </p:messages>        
+                    -->
                     <h:form id = "idform_rc" >
                         <p:remoteCommand name = "handleSlideEvent" process = "@this" update = "@none" partialSubmit = "true" async = "false" actionListener = "#{data.onSliderEvent()}" />
-                        <p:remoteCommand name = "handleTouchEvent" process = "@this" update = "@none" partialSubmit = "true" async = "false" actionListener = "#{data.onTouchEvent()}"  />
+                        <p:remoteCommand name = "handleTouchEvent" process = "@this" update = "@none" partialSubmit = "true" async = "true" actionListener = "#{data.onTouchEvent()}"  />
                     </h:form>
 
                     <h:panelGrid id = "idgridouter" columns = "9" class = "style_wrapper"  >

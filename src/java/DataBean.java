@@ -23,6 +23,10 @@ import javax.validation.constraints.*;
 import javax.faces.event.ValueChangeEvent;
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SlideEndEvent;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+
 
 
 
@@ -61,10 +65,21 @@ public class DataBean {
     @ManagedProperty(value = "#{channelMaster}")
     private int channelMaster;
     
+    private int prevThread = 0;
+    private final Lock lock = new ReentrantLock();
+    
     /**
      * Creates a new instance of DataBean
      */
     public DataBean() {
+    }
+    
+    public void setThread(int thread){
+        this.prevThread = thread;
+    }
+    
+    public int getThread(){
+        return this.prevThread;
     }
     
     public void setChannel0(int component){
@@ -227,25 +242,18 @@ public class DataBean {
         showInfoMessage("OnFlash: " + what);
     }
     
-    public void display(){
-        FacesContext fc = FacesContext.getCurrentInstance();
-        Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
-        String param1 = params.get("val");
-        if (param1 != null){
-            channel0 = Integer.parseInt(param1);
-            RequestContext.getCurrentInstance().update(":idform0:idoutput0");
-            showWarnMessage(param1);
-        }
-    }
     
     public void onTouchEvent(){
+        
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String, String> params = fc.getExternalContext().getRequestParameterMap();
         String param1 = params.get("Channel 0");
-        if (param1 != null){ 
-            showInfoMessage("Touch 1: " + param1 + "%");
+        if (param1 != null){
+            String strThread = params.get("Channel 0");
             channel0 = Integer.parseInt(param1);            
+            showInfoMessage("Channel 1: " + param1 + "%");
             RequestContext.getCurrentInstance().update("idform0:idoutput0");
+            
         }
         param1 = params.get("Channel 1");
         if (param1 != null){
