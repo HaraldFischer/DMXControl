@@ -28,10 +28,11 @@
                     }
                 });
             }
+
+            var offset = null;
+            var compHeight = null;
             
             var element = document.getElementById('idform0:idslide0');
-            var offset = null;
-            var compHeight = null
             
             element.addEventListener('touchstart', function (e){
                 offset = $(this).offset();
@@ -40,152 +41,257 @@
             
             element.addEventListener('touchmove', function (e){
                 e.preventDefault();
-                var clientY = e.targetTouches[0].clientY;
                 var y = e.targetTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
                 PF('varSlider0').setValue(y);
-                document.getElementById("idform0:idoutput0").attribute = y;
+                document.getElementById("idform0:idoutput0").value = y;
                 handleTouchEvent([{name:'Channel 0', value: y}]);
                     
             });  
             
             element.addEventListener('touchend', function(e){
                 
-                var y = e.changedTouches[0].clientY;
-                y = y - offset.top;
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
                 PF('varSlider0').setValue(y);
-                document.getElementById("idform0:idoutput0").attribute = y;
+                document.getElementById("idform0:idoutput0").value = y;
                 handleTouchEvent([{name:'Channel 0', value: y}]);
                
             });
             
             element = document.getElementById('idform1:idslide1');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var offset = $(this).offset();
                 var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
                 y = 100 - Math.round((y*100)/compHeight);
-                y = checkValue(y);
-                
+                y = checkValue(y);                
                 PF('varSlider1').setValue(y);
                 document.getElementById('idform1:idoutput1').value = y;
-                
+                handleTouchEvent([{name:'Channel 1', value: y}]);
+            });
+
+            element.addEventListener('touchend', function(e){
+
+                var y = e.changedTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                PF('varSlider1').setValue(y);
+                document.getElementById("idform1:idoutput1").value = y;
                 handleTouchEvent([{name:'Channel 1', value: y}]);
 
             });
-
+            
             element = document.getElementById('idform2:idslide2');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
             element.addEventListener('touchmove', function(e){
                 e.preventDefault();
-                var offset = $(this).offset();
                 var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
-                
                 PF('varSlider2').setValue(y);
                 document.getElementById('idform2:idoutput2').value = y;
-                
                 handleTouchEvent([{name:'Channel 2', value: y}]);
 
             });
+            
+            element.addEventListener('touchend', function (e){
 
-            element = document.getElementById('idform3:idslide3');
-            element.addEventListener('touchmove', function(e){
-                e.preventDefault();
-                var offset = $(this).offset();
-                var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
+                PF('varSlider2').setValue(y);
+                document.getElementById("idform2:idoutput2").value = y;
+                handleTouchEvent([{name:'Channel 2', value: y}]);
                 
+            });
+
+            element = document.getElementById('idform3:idslide3');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
+            element.addEventListener('touchmove', function(e){
+                e.preventDefault();
+                var y = e.targetTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
                 PF('varSlider3').setValue(y);
-                document.getElementById('idform3:idoutput3').value = y;
-                
+                document.getElementById('idform3:idoutput3').value = y;    
                 handleTouchEvent([{name:'Channel 3', value: y}]);
 
             });
+            
+            element.addEventListener('touchend', function (e){
 
-            element = document.getElementById('idform4:idslide4');
-            element.addEventListener('touchmove', function(e){
-                e.preventDefault();
-                var offset = $(this).offset();
-                var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
+                PF('varSlider3').setValue(y);
+                document.getElementById("idform3:idoutput3").value = y;
+                handleTouchEvent([{name:'Channel 3', value: y}]);
                 
+            });
+            
+            element = document.getElementById('idform4:idslide4');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
+            element.addEventListener('touchmove', function(e){
+                e.preventDefault();
+                var y = e.targetTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
                 PF('varSlider4').setValue(y);
                 document.getElementById('idform4:idoutput4').value = y;
-                
                 handleTouchEvent([{name:'Channel 4', value: y}]);
 
             });
+            
+            element.addEventListener('touchend', function (e){
 
-            element = document.getElementById('idform5:idslide5');
-            element.addEventListener('touchmove', function(e){
-                e.preventDefault();
-                var offset = $(this).offset();
-                var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
-                
+                PF('varSlider4').setValue(y);
+                document.getElementById("idform4:idoutput4").value = y;
+                handleTouchEvent([{name:'Channel 4', value: y}]);
+        
+            });
+            
+            element = document.getElementById('idform5:idslide5');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
+            element.addEventListener('touchmove', function(e){
+                e.preventDefault();
+                var y = e.targetTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);                
                 PF('varSlider5').setValue(y);
-                document.getElementById('idform5:idoutput5').value = y;
-                
+                document.getElementById('idform5:idoutput5').value = y;                
+                handleTouchEvent([{name:'Channel 5', value: y}]);
+
+            });
+            
+            element.addEventListener('touchend', function (e){
+
+                var y = e.changedTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                PF('varSlider5').setValue(y);
+                document.getElementById("idform5:idoutput5").value = y;
                 handleTouchEvent([{name:'Channel 5', value: y}]);
 
             });
             
             element = document.getElementById('idform6:idslide6');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
             element.addEventListener('touchmove', function(e){
+            
                 e.preventDefault();
-                var offset = $(this).offset();
                 var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
-                
                 PF('varSlider6').setValue(y);
                 document.getElementById('idform6:idoutput6').value = y;
-                
                 handleTouchEvent([{name:'Channel 6', value: y}]);
 
             });
             
-            element = document.getElementById('idform7:idslide7');
-            element.addEventListener('touchmove', function(e){
-                e.preventDefault();
-                var offset = $(this).offset();
-                var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
+            element.addEventListener('touchend', function (e){
+
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
+                PF('varSlider6').setValue(y);
+                document.getElementById("idform6:idoutput6").value = y;
+                handleTouchEvent([{name:'Channel 6', value: y}]);
+
+            });
+
+            
+            element = document.getElementById('idform7:idslide7');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
+            element.addEventListener('touchmove', function(e){
                 
+                e.preventDefault();
+                var y = e.targetTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);                
                 PF('varSlider7').setValue(y);
-                document.getElementById('idform7:idoutput7').value = y;
-                
+                document.getElementById('idform7:idoutput7').value = y;                
                 handleTouchEvent([{name:'Channel 7', value: y}]);
 
             });
             
-            element = document.getElementById('idform8:idslidemaster');
-            element.addEventListener('touchmove', function(e){
-                e.preventDefault();
-                var offset = $(this).offset();
-                var y = e.targetTouches[0].clientY - offset.top;
-                var compHeight = $(this).height();
+            element.addEventListener('touchend', function (e){
+
+                var y = e.changedTouches[0].clientY - offset.top;
                 y = 100 - Math.round((y*100)/compHeight);
                 y = checkValue(y);
-                
+                PF('varSlider7').setValue(y);
+                document.getElementById("idform7:idoutput7").value = y;
+                handleTouchEvent([{name:'Channel 7', value: y}]);
+
+            });
+            
+            
+            element = document.getElementById('idform8:idslidemaster');
+            
+            element.addEventListener('touchstart', function (e){
+                offset = $(this).offset();
+                compHeight = $(this).height();
+            });
+            
+            element.addEventListener('touchmove', function(e){
+                e.preventDefault();
+                var y = e.targetTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
                 PF('varSlider8').setValue(y);
-                document.getElementById('idform8:idoutput10').value = y;
-                
+                document.getElementById('idform8:idoutput10').value = y; 
+                handleTouchEvent([{name:'Master', value: y}]);
+
+            });
+
+            element.addEventListener('touchend', function (e){
+
+                var y = e.changedTouches[0].clientY - offset.top;
+                y = 100 - Math.round((y*100)/compHeight);
+                y = checkValue(y);
+                PF('varSlider8').setValue(y);
+                document.getElementById("idform8:idoutput10").value = y;
                 handleTouchEvent([{name:'Master', value: y}]);
 
             });
